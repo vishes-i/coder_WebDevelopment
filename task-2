@@ -1,0 +1,260 @@
+import React from 'react';
+import './About.css';
+
+const About = () => (
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm vishesh kumar prajapati, a passionate full stack web developer</p>
+    </section>
+);
+
+export default About;
+
+--------------------------------
+
+import React from 'react';
+import './Contact.css';
+
+const Contact = () => (
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: visheshprajapati7920@gmail.com</p>
+    </section>
+);
+
+export default Contact;
+--------------------------
+
+import React from 'react';
+import './Header.css';
+
+const Header = () => (
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+);
+
+export default Header;
+------------------------------
+
+import React from 'react';
+import './Projects.css';
+
+const Projects = () => (
+    <section id="projects">
+        <h2>Projects</h2>
+        <div className="project-list">
+            <div className="project-item">
+                <h3>Weather app</h3>
+                <p>Weather apps are applications that provide information about the weather conditions. They enable users to get instant alerts and forecasts for their location or other places.</p>
+            </div>
+            <div className="project-item">
+                <h3>task management</h3>
+                <p>Task management is the process of effectively and efficiently tracking, managing, and executing the life cycle of a task or many tasks within a project, from inception to execution. It involves planning, testing, tracking, and reporting</p>
+            </div>
+              <div className="project-item">
+                <h3>flight booking</h3>
+                <p>From the airline side, it involves many events and systems to issue a ticket and make sure that the right person will board the plane. In this article, we describe the flight booking pipeline and explain the main processes supporting it./p>
+            </div>
+              <div className="project-item">
+                <h3>train-bokking</h3>
+                <p>The online Railway Reservation System requires comprehensive software design documentation and features such as user login, ticket booking, payment processing, PNR status checking, and refund management.</p>
+            </div>
+        </div>
+    </section>
+);
+
+export default Projects;
+
+----------------------------
+
+header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+-----------------------
+
+import React from 'react';
+import './styles/App.css';
+import Header from './components/Header';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+
+const App = () => (
+    <div className="App">
+        <Header />
+        <About />
+        <Projects />
+        <Contact />
+    </div>
+);
+
+export default App;
+-------------------------
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+------------------------------
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+-------------------------
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+reportWebVitals();
+------------
+
+import React, { useState } from 'react';
+
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle sign-in logic here
+    console.log('Email:', email);
+    console.log('Password:', password);
+  };
+
+  return (
+    <div>
+      <h2>Sign In</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  );
+};
+
+export default SignIn;
+-----------------
+import React from 'react';
+import SignIn from './SignIn';
+
+const App = () => {
+  return (
+    <div className="App">
+      <SignIn />
+    </div>
+  );
+};
+
+export default App;
+-------------
+
+div {
+  margin: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  margin-bottom: 12px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
