@@ -1,0 +1,4607 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WhatsApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./css/web.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="shortcut icon" href="https://static.whatsapp.net/rsrc.php/v3/yP/r/rYZqPCBaG70.png">
+</head>
+<style>
+
+  *{
+    box-sizing: border-box;
+    font-family:    Helvetica, sans-serif;
+  }
+  a{
+    text-decoration: none;
+  }
+  nav{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 90px;
+    background-color: rgb(1, 147, 116);
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1;
+  }
+  nav .short_nav{
+    display: none;
+  }
+  .nav_options{
+    list-style-type: none;
+  }
+  .nav_options{
+    flex-basis: 47%;
+    display: inline-flex;
+    font-size: 14px;
+    justify-content: space-between;
+  }
+  .whatsapp_logo{
+    text-align: center;
+  }
+  .whatsapp_logo span{
+    font-size: 20px;
+    vertical-align: 50%;
+  }
+  .nav_options>li{
+    display: inline-block;
+  }
+  nav a{
+    color: white
+  }
+  .dropdown_main .fa-sort-down{
+    font-size: 10px;
+    vertical-align: top;
+  }
+  .content_body{
+    position: relative;
+    top: 83px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0% 3%;
+  }
+  .upper_content{
+    display: flex;
+    flex-direction: row;
+    font-family:  arial,sans-serif;
+    color: rgb(80, 78, 78);
+    line-height: 27px;
+    align-self: center;
+    justify-content: space-evenly;
+    padding-left: 8%;
+    flex-wrap: wrap;
+  }
+
+  .simple_intro,.mobile_image{
+    flex-basis: 37%;
+  }
+  .upper_content .simple_intro{
+    align-self: center;
+  }
+  .upper_content h2{
+    font-weight: lighter;
+    font-size: 30px;
+  }
+  .upper_content p{
+    font-size: 16px;
+    color: rgb(51, 48, 55);
+  }
+  .simple_intro #highlight_detail{
+    color: rgb(51, 48, 55);
+    font-size: 12px;
+  }
+  .details_list{
+    list-style-type: none;
+    line-height: 35px;
+  }
+  .details_list a{
+    color: rgb(21, 204, 164);
+    font-size: 16px;
+  }
+  .lower_content{
+    margin: 3% 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    line-height: 22px;
+    color: rgb(51, 48, 55);
+  }
+
+  .lower_content a{
+    color:gold;
+  }
+  .lower_content .lower_first{
+    text-align: center;
+    background-color: rgb(237, 218, 5);
+    flex-basis: 49%;
+    min-width: 339px;
+    padding: 5% 5% 0 5%;
+  }
+  .lower_first h2,.lower_second h2{
+    font-weight: lighter
+  }
+  .lower_first p{
+    font-size: 14px;
+  }
+  .lower_first img{
+    margin-bottom: -1%;
+  }
+
+  .lower_second{
+    flex-basis: 49%;
+    background-color: rgb(16, 163, 211);
+    text-align: center;
+    min-width: 350px;
+  }
+  .lower_second p{
+    font-size: 14px;
+  }
+  .lower_second p:nth-child(2){
+    font-weight: bolder;
+    font-size: 11px;
+  }
+  .lower_second p:nth-child(4){
+    margin: 0% 10%;
+  }
+  .lower_second .animated_box{
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: rgb(96, 1, 182);
+    width: 230px;
+    height: 230px;
+    margin:10% auto 0 auto;
+  }
+  @keyframes box_movement{
+    0% {
+      left: 50px;
+      top: 500px;
+    }
+    20% {
+
+      left: 50px;
+      top: 90px;
+    }
+    40%{
+      left: 500px;
+      top: 90px;
+    }
+    42% {
+      top: 500px;
+      left: 50px;
+    }
+    45% {
+      top: 500px;
+      left: -500px;
+    }
+    48% {
+      left: -500px;
+      top: 90px;
+
+    }
+    70% {
+      left: 50px;
+      top: 90px;
+    }
+    100%{
+      left: 50px;
+      top: -150px;
+    }
+
+  }
+  #box_animation{
+    background-color: white;
+    width: 120px;
+    height: 37px;
+    color: black;
+    position: relative;
+    border-bottom-left-radius: 13px;
+    border-top-left-radius: 13px;
+    border-bottom-right-radius: 50px;
+    animation-name: box_movement;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  #box_animation .fas{
+    color: rgb(235, 235, 93);
+  }
+  #box_animation p{
+    font-size: 20px;
+    position: absolute;
+    top: -10px;
+    left: 22px;
+  }
+  /* .explore_button{
+      position: relative;
+      top: 100px;
+      text-align: center;
+      margin-bottom: 10%;
+  } */
+
+  .explore_button{
+    margin: 10px;
+    align-self: center;
+    margin: 6% 0;
+  }
+
+  .explore_button a{
+    display: inline-block;
+    color: rgb(51, 48, 55);
+    background-color: #f80202;
+    border: 2px solid rgba(244, 243, 246, 0.33);
+    border-radius: 25px;
+    padding: 22px;
+    font-weight: bolder;
+  }
+  footer{
+    background-color: rgb(39,52,67);
+    position: relative;
+    top: 80px;
+    width: 101%;
+    left: -8px;
+  }
+  footer ul{
+    list-style: none;
+  }
+  .bottom_options{
+    display: flex;
+    width: 80%;
+    line-height: 25px;
+    justify-content: space-evenly;
+    margin: auto;
+  }
+  .bottom_options h4{
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .6);
+    font-size: 15px;
+  }
+  footer a{
+    color: white;
+    font-size: 14px;
+  }
+  footer a:hover{
+    text-decoration: underline;
+  }
+  .bottom_line{
+    background-color: rgb(36, 46, 58);
+    width: 100%;
+  }
+  .bottom_line p{
+    display: inline-block;
+    color: rgba(255, 255, 255, .6);
+  }
+  .bottom_line p:nth-of-type(odd){
+    margin-left: 22%;
+  }
+  .bottom_line p:nth-of-type(even){
+    margin-left: 8.2%;
+  }
+
+
+  @media only screen and (max-width: 1100px){
+    .nav_options{
+      flex-basis: 80%;
+    }
+    .whatsapp_logo{
+      text-align: center;
+    }
+    .whatsapp_logo span{
+      display: none;
+    }
+    .dropdown_main span{
+      display: none;
+    }
+    .bottom_options{
+      width: 100%;
+      justify-content: space-between;
+    }
+    .bottom_line p:nth-of-type(odd){
+      margin-left: 2%;
+    }
+    .bottom_line p:nth-of-type(even){
+      margin-left: 8.2%;
+    }
+  }
+
+  @media only screen and (max-width: 765px){
+    @keyframes nav_box {
+      from{
+        right: -500px;
+      }
+      to {
+        right: -2px;
+      }
+    }
+    :root{
+      --nav_size: 250px;
+    }
+    nav {
+      height: var(--nav_size);
+      position: relative;
+      display: inline-block;
+      top: -10px;
+      left: -8px;
+      width: 102%;
+    }
+    nav .part_nav{
+      display: none;
+    }
+    nav .short_nav{
+      display: block;
+    }
+    .short_nav #dropdown{
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+    .short_nav p{
+      text-align: center;
+      font-size: 40px;
+      transition: 0.2s;
+    }
+    .fa-bars{
+      font-size: 30px;
+    }
+    .short_nav li,.short_nav a{
+      color: #f40606;
+      font-size: 15px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      line-height: 30px;
+
+    }
+    .short_nav li{
+      margin-left: -25px;
+    }
+    .dropdown_main span{
+      display: inline;
+    }
+    .short_nav #dropdown:hover ul{
+      display: block;
+      position: absolute;
+      line-height: 27px;
+      right: -5px;
+      top: -20px;
+      width: 180px;
+      height: var(--nav_size);
+      background-color: transparent;
+      animation-name: nav_box;
+      animation-duration: 0.1s;
+      padding-top: 28px;
+      border-left: 5px ridge white;
+    }
+    .short_nav #dropdown:hover + p{
+      text-align: left;
+      font-size: 20px;
+      margin-left: 12px;
+    }
+    .short_nav ul{
+      list-style-type: none;
+      display: none;
+    }
+
+    .short_nav a:hover li{
+      font-size: 17px;
+    }
+    .content_body{
+      padding: 0 0;
+      top: 10px;
+    }
+    .simple_intro,.mobile_image{
+      flex-basis: 100%;
+    }
+    .mobile_image{
+
+      text-align: center;
+    }
+    .lower_content .lower_first{
+
+      flex-basis: 100%;
+    }
+    .lower_second{
+      flex-basis: 100%;
+    }
+    .bottom_options{
+      flex-wrap: wrap;
+      width: 50%
+    }
+    .bottom_line{
+      padding: 0.007% 0;
+    }
+    .bottom_line p{
+      display: block;
+    }
+    .bottom_line p:nth-of-type(odd){
+      margin-left: 2%;
+    }
+    .bottom_line p:nth-of-type(even){
+      margin-left: 2%;
+    }
+  }
+a:hover{
+  background-color: #a62828;
+  width: 100px;
+  color: #333037;
+}
+</style>
+<body  style="background-image: url('https://c.tenor.com/7TsSID1mzUIAAAAM/glitter-purple.gif')">
+
+<div class="main">
+  <nav>
+    <div class="whatsapp_logo part_nav">
+
+      <a href="ffghj.html"><img src="https://static.whatsapp.net/rsrc.php/v3/yP/r/rYZqPCBaG70.png"
+                                       alt="whatsapp_logo" width="40px" height="40px"><span>WhatsApp</span></a>
+    </div>
+    <ul class="nav_options part_nav">
+
+      <li><a href="#">WHATSAPP WEB</a></li>
+      <li><a href="#">FEATURES</a></li>
+      <li><a href="#">DOWNLOAD</a></li>
+      <li><a href="#">SECURITY</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li class="dropdown_main"><i class="fas fa-globe"></i> <span> EN <i class="fas fa-sort-down"></i></span>
+      </li>
+    </ul>
+
+    <div class="short_nav">
+                <span id="dropdown"><i class="fas fa-bars"></i>
+                    <ul>
+                        <a href="#">
+                            <li>WHATSAPP WEB</li>
+                        </a>
+                        <a href="#">
+                            <li>FEATURES</li>
+                        </a>
+                        <a href="#">
+                            <li>DOWNLOAD</li>
+                        </a>
+                        <a href="#">
+                            <li>SECURITY</li>
+                        </a>
+                        <a href="#">
+                            <li>FAQ</li>
+                        </a>
+                        <li class="dropdown_main"><i class="fas fa-globe"></i> <span> EN <i
+                                class="fas fa-sort-down"></i></span></li>
+                    </ul>
+                </span>
+      <p><a href="ffghj.html"><img src="https://static.whatsapp.net/rsrc.php/v3/yP/r/rYZqPCBaG70.png"
+                                          alt="whatsapp_logo" width="70px" height="70px"></a> <br> WhatsApp</p>
+
+    </div>
+  </nav>
+
+  <div class="content_body">
+
+    <div class="upper_content">
+
+      <div class="simple_intro">
+        <h2>Simple. Secure.<br>Reliable messaging.</h2>
+        <p>
+          With WhatsApp, you'll get fast, simple, secure messaging
+          and calling for free*, available on
+          phones all over the world.
+          <br>
+          <br>
+          <span id="highlight_detail">
+                            * Data charges may apply. Contact your provider for details.
+                        </span>
+        </p>
+
+        <ul class="details_list">
+          <li><a href="#"><i
+                  class="fab fa-android"></i> &nbsp Android</a></li>
+          <li><a href="#"><i
+                  class="fab fa-apple"></i> &nbsp Iphone</a></li>
+          <li><a href="#"><i class="fas fa-desktop"></i> &nbsp Mac or
+            Windows PC</a></li>
+          <li><a
+                  href="#"><i
+                  class="fab fa-windows"></i> &nbsp Windows Phone</a></li>
+        </ul>
+      </div>
+
+      <div class="mobile_image">
+        <a href="ffghj.html">
+          <img src="https://th.bing.com/th/id/OIP.pIFSNQasc4ZKWBP5a5gO-wHaHa?w=500&h=500&rs=1&pid=ImgDetMain" alt="Mobile Whatsapp">
+        </a>
+      </div>
+    </div>
+    <div class="lower_content">
+
+      <div class="lower_first">
+
+        <h2>WhatsApp Business App</h2>
+        <p>
+          <a href="#" class="marked_business">WhatsApp Business</a> is an
+          Android app which is free to download, and was built with the small
+          business owner in mind. With the app, businesses can interact with customers easily by using
+          tools to automate, sort, and quickly respond to messages. If you're a large business,<a
+                href="#" class="marked_business"> learn more
+          about the WhatsApp Business API</a>.
+        </p>
+        <br>
+        <img src="https://gifdb.com/images/high/whatsapp-cartoon-conversation-a9ic5l97gp4d7gmq.gif" alt="image of mobile" width="400px" height="400px">
+      </div>
+
+      <div class="lower_second">
+
+        <div class="animated_box">
+          <div id="box_animation">
+            <p>Hello!<i class="fas fa-grin-hearts"></i></p>
+          </div>
+
+        </div>
+        <p>END-TO-END ENCRYPTION</p>
+        <h2>Security By Default</h2>
+        <p>
+          Some of your most personal moments are shared on WhatsApp, which is why we built end-to-end
+          encryption into the latest versions of our app. When end-to-end encrypted, your messages and
+          calls are secured so only you and the person you're communicating with can read or listen to
+          them, and nobody in between, not even WhatsApp.
+        </p>
+      </div>
+
+    </div>
+    <div class="explore_button">
+      <a href="#">EXPLORE FEATURES</a>
+    </div>
+  </div>
+  <footer>
+    <br>
+    <div class="bottom_options">
+      <ul>
+        <h4>whatsapp</h4>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Download</a></li>
+        <li><a href="#">WhatsApp Web</a></li>
+        <li><a href="#">business</a></li>
+      </ul>
+      <ul>
+        <h4>company</h4>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Brand Center</a></li>
+        <li><a href="#">Get In Touch</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+      <ul>
+        <h4>download</h4>
+        <li><a href="#">Mac/PC</a></li>
+        <li><a href="#">Android</a></li>
+        <li><a href="#">iPhone</a></li>
+        <li><a
+                href="#">Windows
+          Phone</a></li>
+        <li><a href="#">Nokia</a></li>
+      </ul>
+      <ul>
+        <h4>help</h4>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Twiter</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="bottom_line">
+      <p>2019 &copy; WhatsApp Inc</p>
+      <p><a href="#"> Privacy &amp; Terms</a></p>
+    </div>
+  </footer>
+
+</div>
+
+
+</body>
+
+</html>
+----------------
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Navbar</title>
+    <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    }
+    .main{
+        width: 350px;
+        height: 500px;
+        background: red;
+        overflow: hidden;
+        background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+    }
+    #chk{
+        display: none;
+    }
+    .signup{
+        position: relative;
+        width:100%;
+        height: 100%;
+    }
+    label{
+        color: #fff;
+        font-size: 2.3em;
+        justify-content: center;
+        display: flex;
+        margin: 60px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+    }
+    input{
+        width: 60%;
+        height: 20px;
+        background: #e0dede;
+        justify-content: center;
+        display: flex;
+        margin: 20px auto;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    button{
+        width: 60%;
+        height: 40px;
+        margin: 10px auto;
+        justify-content: center;
+        display: block;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 20px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+    }
+    button:hover{
+        background: #6d44b8;
+    }
+    .login{
+        height: 460px;
+        background: #eee;
+        border-radius: 60% / 10%;
+        transform: translateY(-180px);
+        transition: .8s ease-in-out;
+    }
+    .login label{
+        color: #573b8a;
+        transform: scale(.6);
+    }
+
+    #chk:checked ~ .login{
+        transform: translateY(-500px);
+    }
+    #chk:checked ~ .login label{
+        transform: scale(1);
+    }
+    #chk:checked ~ .signup label{
+        transform: scale(.6);
+    }
+
+</style>
+<body>
+<div class="main"  style="background-image: url('https://c.tenor.com/7TsSID1mzUIAAAAM/glitter-purple.gif')">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <div class="signup" style="background-image: url('https://c.tenor.com/7TsSID1mzUIAAAAM/glitter-purple.gif')">
+        <form>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="txt" placeholder="User name" required="">
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>
+                <a   style="text-decoration: none; font-size: larger;"  href="indexedfg.html" > Sign up</a>
+
+
+            </button>
+        </form>
+    </div>
+
+    <div class="login"  style="background-image: url('https://c.tenor.com/7TsSID1mzUIAAAAM/glitter-purple.gif')">
+        <form>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>
+                <a style="text-decoration: none; font-size: larger;" href="indexedfg.html"> Login</a>
+
+
+            </button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+----------------------
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Whatsapp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<style>
+    .user_img {
+        height: 60px;
+        width: 60px;
+        border: 5px solid #ffffff;
+    }
+
+    .user_img_msg {
+        height: 40px;
+        width: 40px;
+        border:5px solid #ffffff;
+    }
+
+    .img_cont {
+        position: relative;
+        height: 70px;
+        width: 70px;
+    }
+
+    .img_cont_msg {
+        height: 40px;
+        width: 40px;
+    }
+
+    .online_icon {
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background-color: #4cd137;
+        border-radius: 50%;
+        bottom: 13px;
+        right: 13px;
+        border: 1.5px solid white;
+    }
+
+    .offline {
+        background-color: #c23616 !important;
+    }
+
+    .user_info {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 15px;
+    }
+
+    .user_info span {
+        font-size: 20px;
+        color: white;
+    }
+
+    .user_info p {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+</style>
+<body>
+
+<div class="container-fluid" id="main-container">
+    <div class="row h-100">
+        <div class="col-12 col-sm-5 col-md-4 d-flex flex-column" id="chat-list-area" style="position:relative; background-color: #a62828">
+
+            <!-- Navbar -->
+            <div class="row d-flex flex-row align-items-center p-2" id="navbar">
+                <img alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px; cursor:pointer;" onclick="showProfileSettings()" id="display-pic">
+                <div class="text-white font-weight-bold" id="username"></div>
+                <div class="nav-item dropdown ml-auto">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v text-white"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">New Group</a>
+                        <a class="dropdown-item" href="#">Archived</a>
+                        <a class="dropdown-item" href="#">Starred</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="chat-list" style="overflow:auto; background-color: #a62828">
+            </div>
+                <div class="d-flex bd-highlight" style="border-bottom: rgb(51,48,55) 1px solid;background-color: #a62828">
+                    <div class="img_cont">
+                        <img src="https://th.bing.com/th/id/OIP.YI5WMCgkKSgcI-RKTHJkAgAAAA?w=250&h=375&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                        <span class="online_icon offline"></span>
+                    </div>
+                    <div class="user_info">
+                        <span style="color: rgb(51,48,55)">Sagun Yadav</span>
+                        <p style="color: #333037">Left 51 mins ago</p>
+                    </div>
+                </div>
+
+                    <div class="d-flex bd-highlight"  style="border-bottom: rgb(51,48,55) 1px solid">
+                        <div class="img_cont">
+                            <img src="https://th.bing.com/th/id/OIP.rumzTzV3Xqgt4pi32nsG2AAAAA?w=352&h=400&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                            <span class="online_icon"></span>
+                        </div>
+                        <div class="user_info">
+                            <span style="color: #333037">Sneha Prajapati</span>
+                            <p style="color: #333037">Online</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex bd-highlight"  style="border-bottom: rgb(51,48,55) 1px solid">
+                        <div class="img_cont">
+                            <img src="https://th.bing.com/th/id/OIP.5uofnbL_USVYPC5fGrTd0QHaIv?w=720&h=850&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                            <span class="online_icon offline"></span>
+                        </div>
+                        <div class="user_info">
+                            <span style="color: #333037">Tejashwani prajapati</span>
+                            <p style="color: #333037">Left 27 mins ago</p>
+                        </div>
+                    </div>
+                    <div class="d-flex bd-highlight"  style="border-bottom: rgb(51,48,55) 1px solid" >
+                        <div class="img_cont">
+                            <img src="https://th.bing.com/th/id/OIP.Q8EXUkH2Bcrk54Ddfna4zAHaJ4?w=768&h=1024&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                            <span class="online_icon"></span>
+                        </div>
+                        <div class="user_info">
+                            <span style="color: #333037;font-size:large">Gudiya dwivedi</span>
+                            <p style="color: #333037;font-size:small">Online</p>
+                        </div>
+                    </div>
+            <div class="d-flex bd-highlight"  style="border-bottom: rgb(51,48,55) 1px solid" >
+                <div class="img_cont">
+                    <img src="https://th.bing.com/th/id/OIP.6p86YdSqMyb3Rr5ARmUjfwHaEo?rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                    <span class="online_icon"></span>
+                </div>
+                <div class="user_info">
+                    <span style="color: #333037;font-size:large">Ghar</span>
+                    <p style="color: #333037;font-size:small">Online</p>
+                </div>
+            </div>
+
+            <!-- Profile Settings -->
+            <div class="d-flex flex-column w-100 h-100" id="profile-settings" style="background-image: url('https://wallpapercave.com/wp/wp2761896.gif')">
+                <div class="row d-flex flex-row align-items-center p-2 m-0" style="background:#009688; min-height:65px;">
+                    <i class="fas fa-arrow-left p-2 mx-3 my-1 text-white" style="font-size: 1.5rem; cursor: pointer;" onclick="hideProfileSettings()"></i>
+                    <div class="text-white font-weight-bold">Profile</div>
+                </div>
+                <div class="d-flex flex-column" style="overflow:auto;">
+                    <img alt="Profile Photo" class="img-fluid rounded-circle my-5 justify-self-center mx-auto" id="profile-pic">
+                    <input type="file" id="profile-pic-input" class="d-none">
+                    <div class="bg-white px-3 py-2"  >
+                        <div class="text-muted mb-2"></div>
+                        <H3 for="input-name">Profile-Name</H3>
+                        <h1 id="input-name" class="w-100 border-0 py-2 profile-input" STYLE=" font-size: large">VISHESH KUMAR PRAJAPATI</h1>
+                    </div>
+                    <div class="text-muted p-3 small" >
+<h1 style="font-size: large">"Silence is the best of all stupid question and smile is the best reaction of all situation"</h1>
+                    </div >
+                    <div class="text-muted mb-2"  STYLE="font-size:large;font-weight: bolder;color: black " >
+                        <p style="color: black;font-size:large;font-weight: bolder">PHONE-NUMBER:<span style="color: #555555">9236000000</span></p>
+                        <label for="input-about" STYLE="font-size:large;font-weight: bolder;color: black ">About :</label > JAI SHREE MAHAKAAL</div>
+                    <div class="bg-white px-3 py-2"  >
+
+                        <input type="text" name="name" id="input-about" value="" class="w-100 border-0 py-2 profile-input">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Message Area -->
+        <div class="d-none d-sm-flex flex-column col-12 col-sm-7 col-md-8 p-0 h-100" id="message-area" >
+            <div class="w-100 h-100 overlay" style="background-image:url('https://cdn.wallpapersafari.com/86/0/5y4jl6.gif') ;width: 850px"></div>
+
+            <!-- Navbar -->
+            <div class="row d-flex flex-row align-items-center p-2 m-0 w-100" id="navbar" style="background-image:url('https://cdn.wallpapersafari.com/86/0/5y4jl6.gif') ">
+                <div class="d-block d-sm-none">
+                    <i class="fas fa-arrow-left p-2 mr-2 text-white" style="font-size: 1.5rem; cursor: pointer;" onclick="showChatList()"></i>
+                </div>
+                <a href="#"><img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px;" id="pic"></a>
+                <div class="d-flex flex-column" >
+                    <div class="text-white font-weight-bold" id="name" ></div>
+                    <div class="text-white small" id="details"></div>
+                </div>
+                <div class="d-flex flex-row align-items-center ml-auto">
+                    <a href="#"><i class="fas fa-search mx-3 text-white d-none d-md-block"></i></a>
+                    <a href="#"><i class="fas fa-paperclip mx-3 text-white d-none d-md-block"></i></a>
+                    <a href="#"><i class="fas fa-ellipsis-v mr-2 mx-sm-3 text-white"></i></a>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="d-flex flex-column" id="messages" style="background-image:url('https://cdn.wallpapersafari.com/86/0/5y4jl6.gif') "></div>
+
+            <!-- Input -->
+            <div class="d-none justify-self-end align-items-center flex-row" id="input-area">
+                <a href="#"><i class="far fa-smile text-muted px-3" style="font-size:1.5rem;"></i></a>
+                <input type="text" name="message" id="input" placeholder="Type a message" class="flex-grow-1 border-0 px-3 py-2 my-3 rounded shadow-sm">
+                <i class="fas fa-paper-plane text-muted px-3" style="cursor:pointer;" onclick="sendMessage()"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+<script src="datastore.js"></script>
+<script src="date-utils.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
+---------------------
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"; rel="stylesheet"
+        id="bootstrap-css" />
+  <style>
+    .register .nav-tabs .nav-link:hover {
+      border: none;
+    }
+    .text-align {
+      margin-top: -3%;
+      margin-bottom: -9%;
+      padding: 10%;
+      margin-left: 30%;
+    }
+    .form-new {
+      margin-right: 22%;
+      margin-left: 20%;
+    }
+    .register-heading {
+      margin-left: 21%;
+      margin-bottom: 10%;
+      color: #e9ecef;
+    }
+    .register-heading h1 {
+      margin-left: 21%;
+      margin-bottom: 10%;
+      color: #e9ecef;
+    }
+    .register {
+      background: -webkit-linear-gradient(left, #055a4f, #00c6ff);
+      margin-top: 3%;
+      padding: 3%;
+      border-radius: 2.5rem;
+    }
+    .btnSubmit {
+      width: 50%;
+      border-radius: 1rem;
+      padding: 1.5%;
+      color: #fff;
+      background-color: #03612e;
+      border: none;
+      cursor: pointer;
+      margin-right: 6%;
+      color: rgb(246, 246, 252);
+      margin-top: 4%;
+    }
+  </style>
+</head>
+<body  style="background-image: url('https://c.tenor.com/7TsSID1mzUIAAAAM/glitter-purple.gif')">
+<div class="container register">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel"
+           aria-labelledby="home-tab">
+        <h3 class="register-heading text-nowrap">WhatsApp-Contact-Saved</h3>
+        <div class="row register-form">
+          <div class="col-md-12">
+            <form autocomplete="off">
+              <div class="form-group">
+                <input type="text" name="Name" id="name" class="form-control"
+                       placeholder="Your Name *" value="" required="" />
+              </div>
+              <div class="form-group">
+                <input type="text" name="Email" id="email" class="form-control"
+                       placeholder="Your Email *" value="" required="" />
+              </div>
+              <div class="form-group">
+                <input type="number" name="Phone" id="phone" class="form-control"
+                       placeholder="Your Contact Number *" value="" required="" />
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="service">
+                  <option>Default select</option>
+                  <option>Website Developer</option>
+                  <option>Mobile App Developer</option>
+                  <option>Web and Mobile Application developer</option>
+                  <option>Teacher</option>
+                  <option>Student</option>
+                  <option>Software engineer</option>
+                  <option>Common person</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="button" name="submit" class="btnSubmit btn-block" onclick="gotowhatsapp()" value="Submit" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>;
+<script>
+  function gotowhatsapp() {
+
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var service = document.getElementById("service").value;
+    var url = "http://localhost:63342/untitled71/indexedfg.html?_ijt=ljo8ndvjg6sqe08b6q84b54tgf";
+    + "Name: " + name + "%0a"
+    + "Phone: " + phone + "%0a"
+    + "Email: " + email  + "%0a"
+    + "Service: " + service;
+    window.open(url, '_blank').focus();
+  }
+</script>
+</body>
+</html>
+--------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" >
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+  .chat-header a {
+    text-decoration: none;
+    color: #e3dbdb;
+  }
+
+  .copyright {
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .copyright a {
+    text-decoration: none;
+    color: #0369aa;
+  }
+
+  #chatbot-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+  }
+
+  .chatbot-popup {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #6403bd;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+    z-index: 1000;
+  }
+
+  .chat-header {
+    background-color: #1087ff;
+    color: #fff;
+    padding: 15px 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #close-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .chat-box {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 15px 20px;
+  }
+
+  .chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  #user-input {
+    font-family: "Poppins",serif;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    outline: none;
+  }
+
+  #send-btn {
+    font-family: "Poppins", sans-serif;
+    padding: 10px 20px;
+    border: none;
+    background-color: #1087ff;
+    color: #fff;
+    border-radius: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #send-btn:hover {
+    background-color: #0074cc;
+  }
+
+  .user-message {
+    background-color: #f3f3f3;
+    color: #333;
+    padding: 14px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 10px; /* Push user message to the left */
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse; /* Move user message to the right */
+  }
+
+  .user-message::before {
+    content: "\1F468"; /* Man emoji */
+    position: absolute;
+    bottom: -17px;
+    right: -20px;
+    margin-bottom: 7px;
+    font-size: 20px;
+    background-color: #1087ff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .bot-message {
+    background-color: #1087ff;
+    color: #fff;
+    padding: 14px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    align-self: flex-start; /* Move bot message to the left */
+    margin-right: 10px; /* Push bot message to the right */
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column; /* Adjust for button placement */
+  }
+
+  .bot-message::before {
+    content: "\1F916"; /* Robot emoji */
+    position: absolute;
+    bottom: -17px;
+    left: -14px;
+    margin-bottom: 4px;
+    font-size: 20px;
+    background-color: #1087ff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .button-container button {
+    padding: 10px 50px;
+    border: none;
+    background-color: #1087ff;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button-container button:hover {
+    background-color: #0074cc;
+  }
+</style>
+<body style="background-image: url('https://art.pixilart.com/9669a6e72dacbd9.gif');height: 1050px;">
+<div class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
+    <nav class="menu" style="margin-top: 40px;">
+      <ul class="items" style="background-color: black">
+        <li class="item">
+        <a href="index2.html" style="text-decoration: none">  <i class="fa fa-home" aria-hidden="true"></i></a>
+        </li>
+        <li class="item">
+          <a href="chat.html" style="text-decoration: none">    <i class="fa fa-user" aria-hidden="true"></i></a>
+        </li>
+        <li class="item">
+          <a href="ghsfjm,.html">
+
+
+          <img src="https://static.vecteezy.com/system/resources/previews/017/217/581/original/message-icon-free-vector.jpg" width="50px" alt="">
+          </a>
+        </li>
+        <li class="item item-active" style="background-color: black">
+          <img src="https://static.vecteezy.com/system/resources/previews/000/649/717/original/sms-icon-symbol-sign-vector.jpg" width="50px">
+        </li>
+        <li class="item">
+          <i class="fa fa-file" aria-hidden="true"></i>
+        </li>
+        <li class="item">
+          <i class="fa fa-cog" aria-hidden="true"></i>
+        </li>
+        <li class="item" style="margin-top: 500px">
+
+
+        <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" width="50px" style="border-radius: 50%;margin-bottom: 50px"  alt="">
+        </li>
+      </ul>
+    </nav>
+    <div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 1000px;margin-top:40px">
+      <div class="card-header" >
+        <div class="input-group">
+          <input type="text" placeholder="Search..." name="" class="form-control search">
+          <div class="input-group-prepend">
+            <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body contacts_body">
+        <ui class="contacts">
+          <li class="active">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://doximity-res.cloudinary.com/images/f_auto,q_auto,t_profile_photo_320x320/ytsvkctji0x9jfyfs6tm/haley-strunk-do-harrogate-tn.jpg" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span><a href="indexdfsdsgg.html" style="text-decoration: none">Tejashwani Rathore</a></span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.F89kdytJdCGlQVRDOXrwbAHaJQ?w=640&h=800&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Swati Chaurasiya</span>
+                <p>Left 7 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://www.sju.edu/sites/default/files/inline-images/Tana-Lorraine_1.jpeg" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Swati Srivastava</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.bP9zH-Zu5bi8sVXOLy6wzAAAAA?w=320&h=320&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Anjali Prajapati</span>
+                <p>Left 35 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.YI5WMCgkKSgcI-RKTHJkAgAAAA?w=250&h=375&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Sagun Yadav</span>
+                <p>Left 51 mins ago</p>
+              </div>
+            </div>
+          </li>
+        </ui>
+        <ui class="contacts">
+          <li class="active">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.rumzTzV3Xqgt4pi32nsG2AAAAA?w=352&h=400&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Sneha Prajapati</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.5uofnbL_USVYPC5fGrTd0QHaIv?w=720&h=850&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Tejashwani prajapati</span>
+                <p>Left 27 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.Q8EXUkH2Bcrk54Ddfna4zAHaJ4?w=768&h=1024&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Gudiya dwivedi</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.Up-xGpAyNsP146ptRCFfLQHaHa?w=475&h=476&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Swati Yadav</span>
+                <p>Left 10 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.3tAQ9MVP3X-DB-27msdmvgHaJP?w=756&h=943&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Akansha Dubey</span>
+                <p>Left 20 mins ago</p>
+              </div>
+            </div>
+          </li>
+        </ui>
+        <ui class="contacts">
+          <li class="active">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.j8yd8dJ5215WbgQ0NsLzuAHaNK?rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Vijay Kharwar</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.HmqctKIVj9tAW7kIEw__CQHaLH?w=1280&h=1920&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Muskan  Verma</span>
+                <p>Left 37 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://i0.wp.com/www.torontophotographerz.com/wp-content/uploads/2017/06/Linkedin-portraits-2.jpg?fit=800%2C1200&ssl=1" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Shrishti Shukla</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://img.freepik.com/premium-photo/young-girl-with-long-blond-hair_613910-11329.jpg" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Dipali Singh</span>
+                <p>Left 39 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://live.staticflickr.com/65535/52426312575_6fb54515f6_b.jpg" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Sujeet Yadav</span>
+                <p>Left 59 mins ago</p>
+              </div>
+            </div>
+
+          </li>
+        </ui>
+        <ui class="contacts">
+          <li class="active">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.nETxMC9WJRDG9JzZ7gHg2gHaHa?w=1024&h=1024&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Shahil Shaikh</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.EIS3N-kQXPeX5GZniNqF4AHaK_?w=606&h=900&rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Pihu Singh</span>
+                <p>Left 17 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.iuvJjIFEqWQfS15aPURrrQHaLH?rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Aditya Prajapati</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight" >
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/R.05c89724f92d0d1dd3f3ee4292d561ae?rik=gh6yec6FAta%2fKA&riu=http%3a%2f%2fi.pinimg.com%2f736x%2faf%2fbc%2ffe%2fafbcfe765f85eeff6d3c68f9da29a5b1--modeling-blonde.jpg&ehk=J2GkgEAPgXKhcwV49Y3rZmyl011oo7OGRQE8QiycBTE%3d&risl=&pid=ImgRaw&r=0" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Rudravi </span>
+                <p>Left 39 min ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="https://th.bing.com/th/id/OIP.rXZxdyoUq9eXV0yok1d2CAAAAA?rs=1&pid=ImgDetMain" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Teja Arora</span>
+                <p>Left 1 hour ago</p>
+              </div>
+            </div>
+
+          </li>
+        </ui>
+      </div>
+      <div class="card-footer"></div>
+    </div></div>
+    <div class="col-md-8 col-xl-6 chat" style="height:1000px;margin-top:40px">
+      <div class="card" style="height: 1000px">
+        <div class="card-header msg_head">
+          <div class="d-flex bd-highlight">
+            <div class="img_cont">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img">
+              <span class="online_icon"></span>
+            </div>
+            <div class="user_info">
+              <span>Anjali Srivastava</span>
+              <p>3767 Messages</p>
+            </div>
+            <div class="video_cam">
+              <span><i class="fas fa-video"></i></span>
+              <span><i class="fas fa-phone"></i></span>
+            </div>
+          </div>
+          <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+          <div class="action_menu">
+            <ul>
+              <li><i class="fas fa-user-circle"></i><a href="ccv.html" style="text-decoration: none">View Contact</a></li>
+              <li><i class="fas fa-users"></i> Search</li>
+              <li><i class="fas fa-plus"></i> Add to List</li>
+              <li><i class="fas fa-ban"></i>Media, Links,and Docs</li>
+              <li><i class="fas fa-user-circle"></i> Mute Notification</li>
+              <li><i class="fas fa-users"></i>Disappearing Messages</li>
+              <li><i class="fas fa-plus"></i>Chat theme</li>
+              <li><i class="fas fa-ban"></i>More</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body msg_card_body">
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              Hi, how are you vishesh?
+              <span class="msg_time">8:40 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              Hi Anju i am good thanks how about you?
+              <span class="msg_time_send">9:20 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              I am good too, thank you for your fast reply
+              <span class="msg_time">9:38 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              You are welcome Angel
+              <span class="msg_time_send">9:39 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              I am looking for your next project kindly support
+              <span class="msg_time">9:40 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              Ok, thank you have a good day
+              <span class="msg_time_send">9:42 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              Bye, see you
+              <span class="msg_time">9:43 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              good bye
+              <span class="msg_time_send">9:44 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              wait a minute i have some question for you
+              <span class="msg_time">9:45 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              Ok, i am waiting for your question
+              <span class="msg_time_send">9:46 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+              how many company do you have completed successfully internship program can tell me
+              <span class="msg_time">9:48 AM, Today</span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mb-4">
+            <div class="msg_cotainer_send">
+              Ok, more than 30 companies i have completed my internship successfully
+              <span class="msg_time_send">9:50 AM, Today</span>
+            </div>
+            <div class="img_cont_msg">
+              <img src="https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg" class="rounded-circle user_img_msg">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mb-4">
+            <div class="img_cont_msg">
+              <img src="https://i.pinimg.com/736x/ac/65/5e/ac655e8e53f9c5baa52dcd1acd30a21f.jpg" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+           wow! thats great vishu, yai hui na merai dost wali baat
+              <span class="msg_time">9:52 AM, Today</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="input-group">
+            <div class="input-group-append">
+              <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+            </div>
+            <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+            <div class="input-group-append">
+              <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button id="chatbot-toggle-btn"><img src="https://cdn1.iconfinder.com/data/icons/social-media-hexagon-1/1024/whatsapp-512.png" width="50" height="50" alt="buttonpng" /></button>
+<div class="chatbot-popup" id="chatbot-popup">
+  <div class="chat-header">
+    <span>Gudiya <a href="#" target="_blank">Dwivedi</a></span>
+    <button id="close-btn">&times;</button>
+  </div>
+  <div class="chat-box" id="chat-box"></div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type a message...">
+    <button id="send-btn">Send</button>
+  </div>
+  <div class="copyright">
+    <a href="#" target="_blank"> Made By visheshk.p © 2025</a>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+<script>
+  const responses = {
+    hello: "Hi there! How can I assist you today?",
+    "how are you": "I'm just a friend, but I'm here to help you!",
+    "need help": "How I can help you today?",
+"hii":"hi vkp",
+    "hi" :"HEY THERE", "hey":"HI DUDE",
+   "gm":"GM","good morning":"good morning vishesh","vvgm":"gm  vishu",
+    "very bad":" what BAD","not bad":"USELESS THINGS ","not working":"NOT GOOD",
+   "ge":"GOOD EVNG","good evening":"GOOD EVENING Vishesh",
+     "good night":"I'M FEELING SLEEPY",
+     "nice work":"thank you","nice":"what nice","wow its working":"GREAT CODE","awesome coding skills":"IT'S NICE","awesome code sis":"IT'S GOOD","OH MY GOD":"OMG","OHO":"NICE TO MEET YOU","NICE TO MEET U":"thank you","NICE TO SEE YOU":"NICE TO C U",
+     "i hate you":"i hate you to more and more 😅 😅 😅 😅","i miss you too":"I miss you to",
+"good afternoon":"GOOD AFTERNOON vishesh",
+     "good":"👍🏻", "☺️":"😅","lol":"ME TOO",
+    "how r u?":"fine and you?", "good badhiya": "good","hru": "HOW R U?","what about you": "me awesome",
+     "i am good":"that good sound",
+    "What do you mean by whatsapp":"WhatsApp is a free messaging app that allows users to send text messages, make voice and video calls, share media, and more over the internet. It's a popular platform for personal and group communication, available on mobile devices and desktop computers" ,
+    "Which one is the best one science and maths" :"Both science and math are fascinating subjects that have their own unique importance and applications Science helps us understand the natural world, from the human body to the universe. It encompasses various fields like biology chemistry physics and more. Science encourages curiosity critical thinking and problem-solving",
+  "or math" : " Maths on the other hand is the language of numbers and patterns. It provides a framework for understanding and describing the world around us. Math is essential for problem-solving logical reasoning, and analytical thinking.",
+
+  "tell me" : "It's challenging to say which one is best as both science and math  are interconnected and complementary. Many scientific discoveries rely heavily on mathematical concepts, and math often provides the tools to understand and analyze scientific data.",
+
+"okk" :  "Instead of choosing one over the other consider exploring both science and math. You might discover that you have a passion for one or the other, or perhaps you'll find that you enjoy the intersection of both!",
+
+            "what do you mean by reasoning" :"Reasoning refers to the process of drawing conclusions or making decisions based on logic, evidence, and sound judgment. It involves analyzing information, evaluating arguments, and using critical thinking skills to arrive at a well-supported conclusion.",
+   "deductive reasoning":"This involves drawing a specific conclusion from a general principle or premise. (Example: All humans are mortal. Socrates is human. Therefore, Socrates is mortal.)",
+
+   "inductive reasoning":" This involves making a general conclusion based on specific observations or instances. (Example: The sun has risen every morning for the past year. Therefore, it's likely that the sun will rise tomorrow morning.)",
+
+  "abductive reasoning": "This involves making an educated guess or hypothesis based on incomplete information. (Example: I see footprints in the sand. Therefore, it's likely that someone walked here recently.)",
+
+   "analogical reasoning": "This involves making a comparison between two things to arrive at a conclusion. (Example: A car engine is similar to a human heart. Both pump fluid to keep the system running.)",
+
+   "critical reasoning": "This involves objectively evaluating information, arguments, and assumptions to arrive at a well-supported conclusion",
+
+
+          "which one best sports person in world cricket history ms dhoni .Virat Kohli . Rohit Sharma." :" the best sports person in world cricket history is subjective but let's look at the impressive records of MS Dhoni",
+
+    "which college is best in our Lucknow":"Lucknow has numerous excellent colleges each offering unique strengths and specializations. Here are some of the top colleges in Lucknow integral university lucknow university amity university and IIM etc",
+
+  "that nice ":"yaa off course these colleges are very good experience faculties",
+
+  bye: "Goodbye! Have a great day!",
+    default: "I'm sorry, I didn't understand that. Want to connect with expert?",
+    expert: "Great! Please wait a moment while we connect you with an expert.",
+    no: "Okay, if you change your mind just let me know!",
+  };
+
+
+  document
+          .getElementById("chatbot-toggle-btn")
+          .addEventListener("click", toggleChatbot);
+  document.getElementById("close-btn").addEventListener("click", toggleChatbot);
+  document.getElementById("send-btn").addEventListener("click", sendMessage);
+  document
+          .getElementById("user-input")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              sendMessage();
+            }
+          });
+
+  function toggleChatbot() {
+    const chatbotPopup = document.getElementById("chatbot-popup");
+    chatbotPopup.style.display =
+            chatbotPopup.style.display === "none" ? "block" : "none";
+  }
+
+  function sendMessage() {
+    const userInput = document.getElementById("user-input").value.trim();
+    if (userInput !== "") {
+      appendMessage("user", userInput);
+      respondToUser(userInput.toLowerCase());
+      document.getElementById("user-input").value = "";
+    }
+  }
+
+  function respondToUser(userInput) {
+    const response = responses[userInput] || responses["default"];
+    setTimeout(function () {
+      appendMessage("bot", response);
+    }, 500);
+  }
+
+  function appendMessage(sender, message) {
+    const chatBox = document.getElementById("chat-box");
+    const messageElement = document.createElement("div");
+    messageElement.classList.add(
+            sender === "user" ? "user-message" : "bot-message"
+    );
+    messageElement.innerHTML = message;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    if (sender === "bot" && message === responses["default"]) {
+      const buttonYes = document.createElement("button");
+      buttonYes.textContent = "Yes";
+      buttonYes.onclick = function () {
+        appendMessage("bot", responses["expert"]);
+      };
+      const buttonNo = document.createElement("button");
+      buttonNo.textContent = "No";
+      buttonNo.onclick = function () {
+        appendMessage("bot", responses["no"]);
+      };
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("button-container");
+      buttonContainer.appendChild(buttonYes);
+      buttonContainer.appendChild(buttonNo);
+      chatBox.appendChild(buttonContainer);
+    }
+  }
+
+</script>
+</body>
+</html>
+----------------
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+}
+.menu {
+    float: left;
+    height: 700px;;
+    width: 70px;
+    background: #4768b5;
+    background: -webkit-linear-gradient(#0b3bac, #35488e);
+    background: -o-linear-gradient(#4768b5, #35488e);
+    background: -moz-linear-gradient(#4768b5, #35488e);
+    background: linear-gradient(#4768b5, #35488e);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19);
+}
+
+.menu .items {
+    list-style:none;
+    margin: auto;
+    padding: 0;
+}
+
+.menu .items .item {
+    height: 70px;
+    border-bottom: 1px solid #6780cc;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: #9fb5ef;
+    font-size: 17pt;
+}
+
+.menu .items .item-active {
+    background-color:#5172c3;
+    color: #FFF;
+}
+
+.menu .items .item:hover {
+    cursor: pointer;
+    background-color: #4f6ebd;
+    color: #cfe5ff;
+}
+
+.chat {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card {
+    height: 500px;
+    border-radius: 15px !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.contacts_body {
+    padding: 0.75rem 0 !important;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.msg_card_body {
+    overflow-y: auto;
+}
+
+.card-header {
+    border-radius: 15px 15px 0 0 !important;
+    border-bottom: 0 !important;
+}
+
+.card-footer {
+    border-radius: 0 0 15px 15px !important;
+    border-top: 0 !important;
+}
+
+.container {
+    align-content: center;
+}
+
+.search {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+}
+
+.search:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.type_msg {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    height: 60px !important;
+    overflow-y: auto;
+}
+
+.type_msg:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.attach_btn {
+    border-radius: 15px 0 0 15px !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.send_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.search_btn {
+    border-radius: 0 15px 15px 0 !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 0 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.contacts {
+    list-style: none;
+    padding: 0;
+}
+
+.contacts li {
+    width: 100% !important;
+    padding: 5px 10px;
+    margin-bottom: 15px !important;
+}
+
+.active {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.user_img {
+    height: 60px;
+    width: 60px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.user_img_msg {
+    height: 40px;
+    width: 40px;
+    border: 1.5px solid #f5f6fa;
+}
+
+.img_cont {
+    position: relative;
+    height: 70px;
+    width: 70px;
+}
+
+.img_cont_msg {
+    height: 40px;
+    width: 40px;
+}
+
+.online_icon {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background-color: #4cd137;
+    border-radius: 50%;
+    bottom: 13px;
+    right: 13px;
+    border: 1.5px solid white;
+}
+
+.offline {
+    background-color: #c23616 !important;
+}
+
+.user_info {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+
+.user_info span {
+    font-size: 20px;
+    color: white;
+}
+
+.user_info p {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.video_cam {
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.video_cam span {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.msg_cotainer {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    border-radius: 25px;
+    background-color: #0299bc;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_cotainer_send {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 10px;
+    border-radius: 25px;
+    background-color: #78e08f;
+    padding: 10px;
+    position: relative;
+}
+
+.msg_time {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_time_send {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+}
+
+.msg_head {
+    position: relative;
+}
+
+#action_menu_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.action_menu {
+    z-index: 1;
+    position: absolute;
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 15px;
+    top: 30px;
+    right: 15px;
+    display: none;
+}
+
+.action_menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.action_menu ul li {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+}
+
+.action_menu ul li i {
+    padding-right: 10px;
+}
+
+.action_menu ul li:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media(max-width: 576px) {
+    .contacts_card {
+        margin-bottom: 15px !important;
+    }
+}
+
+a
+li:hover{
+    color: chocolate;
+}
+----------
+
+
+let user = {
+    id: 0,
+    name: "VISHESH KUMAR PRAJAPATI",
+    number: "91923435677",
+    pic: "https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg"
+};
+
+let contactList = [
+    {
+        id: 0,
+        name: "vishesh kumar prajapati",
+        number: "me",
+        pic: "https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg",
+        lastSeen: "JAN 27 2025 17:28 PM "
+    },
+    {
+        id: 1,
+        name: "Sonali Dhar",
+        number: "sonali dhar",
+        pic: "https://c.pxhere.com/photos/93/9d/beautiful_camera_cute_girl_hair_photographer_pretty_woman-990040.jpg!d",
+        lastSeen: "FEB 29 2025 11:16 PM"
+    },
+    {
+        id: 2,
+        name: "Tejashwani Rathore",
+        number: "98222247261",
+        pic: "https://doximity-res.cloudinary.com/images/f_auto,q_auto,t_profile_photo_320x320/ytsvkctji0x9jfyfs6tm/haley-strunk-do-harrogate-tn.jpg",
+        lastSeen: "FEB 28 2025 11:16 PM"
+    },
+    {
+        id: 3,
+        name: "Swati  Yadav",
+        number: "swati yadav",
+        pic: "https://i.pinimg.com/originals/4f/a4/7b/4fa47bac9748ba35665394b05852e84e.jpg",
+        lastSeen: "FEB 28 2025 10:23 AM"
+    },
+    {
+        id: 4,
+        name: "Swati chaurasiya",
+        number: "+9982326357",
+        pic: "https://www.sju.edu/sites/default/files/inline-images/Tana-Lorraine_1.jpeg",
+        lastSeen: "FEB 29 2025 11:16 PM"
+    },
+    {
+        id: 5,
+        name: "Swati Srivastava",
+        number: "+9982326357",
+        pic: "https://www.sju.edu/sites/default/files/inline-images/Tana-Lorraine_1.jpeg",
+        lastSeen: "FEB 29 2025 11:16 PM"
+    },
+    {
+        id: 6,
+        name: "Anjali Srivastava",
+        number: "+9727818213",
+        pic: "https://th.bing.com/th/id/OIP.bP9zH-Zu5bi8sVXOLy6wzAAAAA?w=320&h=320&rs=1&pid=ImgDetMain",
+        lastSeen: "FEB 29 2025 11:16 PM "
+    }
+];
+
+let groupList = [
+    {
+        id: 1,
+        name: "TRIMURTI❤️❤️❤️❤️❤️❤️❤️💞💓",
+        members: [0, 1, 3],
+        pic: "https://th.bing.com/th/id/OIP.ebfAq03c0pLhou5jw7pSsQHaFj?rs=1&pid=ImgDetMain"
+    },
+    {
+        id: 2,
+        name: "SWATI YADAV",
+        members: [0, 2],
+        pic: "https://i.pinimg.com/originals/4f/a4/7b/4fa47bac9748ba35665394b05852e84e.jpg"
+    },
+    {
+        id: 3,
+        name: "SONALI DHAR DWIVEDI",
+        members: [0],
+        pic: "https://c.pxhere.com/photos/93/9d/beautiful_camera_cute_girl_hair_photographer_pretty_woman-990040.jpg!d"
+    }
+];
+
+
+
+let messages = [
+    {
+        id: 0,
+        sender: 2,
+        body: "where are you, vishesh",
+        time: "FEB 28, 2025 22:41:55 ",
+        status: 2,
+        recvId: 0,
+        recvIsGroup: false
+    },
+    {
+        id: 1,
+        sender: 0,
+        body: "at home",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 2,
+        recvId: 2,
+        recvIsGroup: false
+    },
+    {
+        id: 2,
+        sender: 0,
+        body: "what are  you doing today?",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 2,
+        recvId: 3,
+        recvIsGroup: false
+    },
+    {
+        id: 3,
+        sender: 3,
+        body: "I am fine what about you?",
+        time: "FEB 27, 2025 23:51:55",
+        status: 2,
+        recvId: 0,
+        recvIsGroup: false
+    },
+    {
+        id: 4,
+        sender: 0,
+        body: "i am also good too",
+        time: "FEB 27, 2025 22:41:55 ",
+        status: 1,
+        recvId: 3,
+        recvIsGroup: false
+    },
+    {
+        id: 5,
+        sender: 3,
+        body: "any one can help me to make a project?",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 0,
+        recvId: 1,
+        recvIsGroup: true
+    },
+    {
+        id: 6,
+        sender: 1,
+        body: "have you seen infinity war?",
+        time: "FEB 27, 2025 22:41:55",
+        status: 1,
+        recvId: 0,
+        recvIsGroup: false
+    },
+    {
+        id: 7,
+        sender: 0,
+        body: "Are you going to utkarsh tonight at bbd?",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 2,
+        recvId: 2,
+        recvIsGroup: false
+    },
+    {
+        id: 8,
+        sender: 2,
+        body: "No, I have  some work to do so i have not come and what about  you?",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 2,
+        recvId: 0,
+        recvIsGroup: false
+    },
+    {
+        id: 9,
+        sender: 0,
+        body: "Hi teju",
+        time: "FEB 27, 2025 22:41:55 ",
+        status: 1,
+        recvId: 2,
+        recvIsGroup: false
+    },
+    {
+        id: 10,
+        sender: 0,
+        body: "if you go to the movie, then give me a call",
+        time: "FEB 27, 2025 22:41:55",
+        status: 2,
+        recvId: 4,
+        recvIsGroup: false
+    },
+    {
+        id: 11,
+        sender: 1,
+        body: "yeh, i'm online please come fast and  discuss  some project",
+        time: "FEB 27, 2025 22:41:55 ",
+        status: 0,
+        recvId: 1,
+        recvIsGroup: true
+    },
+    {
+        id: 5,
+        sender: 0,
+        body: "hi guys ,come fast and join google classroom  or google meet ",
+        time: "FEB 28, 2025 23:41:55 ",
+        status: 0,
+        recvId: 1,
+        recvIsGroup: true
+    }
+];
+
+
+let MessageUtils = {
+    getByGroupId: (groupId) => {
+        return messages.filter(msg => msg.recvIsGroup && msg.recvId === groupId);
+    },
+    getByContactId: (contactId) => {
+        return messages.filter(msg => {
+            return !msg.recvIsGroup && ((msg.sender === user.id && msg.recvId === contactId) || (msg.sender === contactId && msg.recvId === user.id));
+        });
+    },
+    getMessages: () => {
+        return messages;
+    },
+    changeStatusById: (options) => {
+        messages = messages.map((msg) => {
+            if (options.isGroup) {
+                if (msg.recvIsGroup && msg.recvId === options.id) msg.status = 2;
+            } else {
+                if (!msg.recvIsGroup && msg.sender === options.id && msg.recvId === user.id) msg.status = 2;
+            }
+            return msg;
+        });
+    },
+    addMessage: (msg) => {
+        msg.id = messages.length + 1;
+        messages.push(msg);
+    }
+};
+----------------
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#main-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+#navbar {
+    background: #009688;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.chat-list-item {
+    background: #a62828;
+    cursor: pointer;
+}
+
+.chat-list-item:hover {
+    background: hsl(0, 0%, 95%);
+}
+
+.chat-list-item:active {
+    background: hsl(0, 0%, 85%);
+}
+
+.chat-list-item.active {
+    background: hsl(0, 0%, 90%);
+}
+
+.chat-list-item .chat-details {
+    width: 60%;
+}
+
+.chat-list-item.unread .name,
+.chat-list-item.unread .last-message {
+    font-weight: bold;
+}
+
+.chat-list-item .last-message,
+#message-area #navbar #details {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#message-area {
+    border-left: 1px solid white;
+}
+
+#message-area .overlay {
+    background: hsl(0, 0%, 80%);
+}
+
+#input-area {
+    background: hsl(0, 0%, 95%);
+}
+
+#input-area #input {
+    outline: none;
+}
+
+.message-item {
+    position:relative;
+    max-width: 75%;
+    word-break: break-word;
+}
+.message-item.self {
+    background: #dcf8c6!important;
+}
+.message-item .number {
+    color: #1f7aec !important;
+}
+.message-item .options {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+.message-item:hover .options {
+    opacity: 1;
+    right: 0;
+}
+
+#messages {
+    flex: 1!important;
+    background: hsl(0, 0%, 80%);
+    overflow: auto;
+}
+
+#profile-settings {
+    position: absolute;
+    top: 0;
+    left: -110%;
+    background: hsl(0, 0%, 95%);
+    transition: all 0.2s ease-in;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+#profile-pic {
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+}
+
+.profile-input {
+    border-bottom: 2px solid transparent  !important;
+    outline: none;
+}
+
+.profile-input:focus {
+    border-bottom-color: hsl(0, 0%, 50%) !important;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  :root {
+    --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --msger-bg: #fff;
+    --border: 2px solid #ddd;
+    --left-msg-bg: #ececec;
+    --right-msg-bg: #579ffb;
+  }
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:before,
+  *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: var(--body-bg);
+    font-family: Helvetica, sans-serif;
+  }
+
+  .msger {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 867px;
+    margin: 25px 10px;
+    height: calc(100% - 50px);
+    border: var(--border);
+    border-radius: 5px;
+    background: var(--msger-bg);
+    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+  }
+
+  .msger-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: var(--border);
+    background: #eee;
+    color: #666;
+  }
+
+  .msger-chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  .msger-chat::-webkit-scrollbar {
+    width: 6px;
+  }
+  .msger-chat::-webkit-scrollbar-track {
+    background: #ddd;
+  }
+  .msger-chat::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+  }
+  .msg {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  }
+  .msg:last-of-type {
+    margin: 0;
+  }
+  .msg-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background: #ddd;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+  }
+  .msg-bubble {
+    max-width: 450px;
+    padding: 15px;
+    border-radius: 15px;
+    background: var(--left-msg-bg);
+  }
+  .msg-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .msg-info-name {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  .msg-info-time {
+    font-size: 0.85em;
+  }
+
+  .left-msg .msg-bubble {
+    border-bottom-left-radius: 0;
+  }
+
+  .right-msg {
+    flex-direction: row-reverse;
+  }
+  .right-msg .msg-bubble {
+    background: var(--right-msg-bg);
+    color: #fff;
+    border-bottom-right-radius: 0;
+  }
+  .right-msg .msg-img {
+    margin: 0 0 0 10px;
+  }
+
+  .msger-inputarea {
+    display: flex;
+    padding: 10px;
+    border-top: var(--border);
+    background: #eee;
+  }
+  .msger-inputarea * {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+  }
+  .msger-input {
+    flex: 1;
+    background: #ddd;
+  }
+  .msger-send-btn {
+    margin-left: 10px;
+    background: rgb(0, 196, 65);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.23s;
+  }
+  .msger-send-btn:hover {
+    background: rgb(0, 180, 50);
+  }
+
+  .msger-chat {
+    background-color: #fcfcfe;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23dddddd' fill-opacity='0.4'%3E%3Cpath d='M24.37 16c.2.65.39 1.32.54 2H21.17l1.17 2.34.45.9-.24.11V28a5 5 0 0 1-2.23 8.94l-.02.06a8 8 0 0 1-7.75 6h-20a8 8 0 0 1-7.74-6l-.02-.06A5 5 0 0 1-17.45 28v-6.76l-.79-1.58-.44-.9.9-.44.63-.32H-20a23.01 23.01 0 0 1 44.37-2zm-36.82 2a1 1 0 0 0-.44.1l-3.1 1.56.89 1.79 1.31-.66a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .9 0l2.21-1.1a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .9 0l2.21-1.1a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .86.02l2.88-1.27a3 3 0 0 1 2.43 0l2.88 1.27a1 1 0 0 0 .85-.02l3.1-1.55-.89-1.79-1.42.71a3 3 0 0 1-2.56.06l-2.77-1.23a1 1 0 0 0-.4-.09h-.01a1 1 0 0 0-.4.09l-2.78 1.23a3 3 0 0 1-2.56-.06l-2.3-1.15a1 1 0 0 0-.45-.11h-.01a1 1 0 0 0-.44.1L.9 19.22a3 3 0 0 1-2.69 0l-2.2-1.1a1 1 0 0 0-.45-.11h-.01a1 1 0 0 0-.44.1l-2.21 1.11a3 3 0 0 1-2.69 0l-2.2-1.1a1 1 0 0 0-.45-.11h-.01zm0-2h-4.9a21.01 21.01 0 0 1 39.61 0h-2.09l-.06-.13-.26.13h-32.31zm30.35 7.68l1.36-.68h1.3v2h-36v-1.15l.34-.17 1.36-.68h2.59l1.36.68a3 3 0 0 0 2.69 0l1.36-.68h2.59l1.36.68a3 3 0 0 0 2.69 0L2.26 23h2.59l1.36.68a3 3 0 0 0 2.56.06l1.67-.74h3.23l1.67.74a3 3 0 0 0 2.56-.06zM-13.82 27l16.37 4.91L18.93 27h-32.75zm-.63 2h.34l16.66 5 16.67-5h.33a3 3 0 1 1 0 6h-34a3 3 0 1 1 0-6zm1.35 8a6 6 0 0 0 5.65 4h20a6 6 0 0 0 5.66-4H-13.1z'/%3E%3Cpath id='path6_fill-copy' d='M284.37 16c.2.65.39 1.32.54 2H281.17l1.17 2.34.45.9-.24.11V28a5 5 0 0 1-2.23 8.94l-.02.06a8 8 0 0 1-7.75 6h-20a8 8 0 0 1-7.74-6l-.02-.06a5 5 0 0 1-2.24-8.94v-6.76l-.79-1.58-.44-.9.9-.44.63-.32H240a23.01 23.01 0 0 1 44.37-2zm-36.82 2a1 1 0 0 0-.44.1l-3.1 1.56.89 1.79 1.31-.66a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .9 0l2.21-1.1a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .9 0l2.21-1.1a3 3 0 0 1 2.69 0l2.2 1.1a1 1 0 0 0 .86.02l2.88-1.27a3 3 0 0 1 2.43 0l2.88 1.27a1 1 0 0 0 .85-.02l3.1-1.55-.89-1.79-1.42.71a3 3 0 0 1-2.56.06l-2.77-1.23a1 1 0 0 0-.4-.09h-.01a1 1 0 0 0-.4.09l-2.78 1.23a3 3 0 0 1-2.56-.06l-2.3-1.15a1 1 0 0 0-.45-.11h-.01a1 1 0 0 0-.44.1l-2.21 1.11a3 3 0 0 1-2.69 0l-2.2-1.1a1 1 0 0 0-.45-.11h-.01a1 1 0 0 0-.44.1l-2.21 1.11a3 3 0 0 1-2.69 0l-2.2-1.1a1 1 0 0 0-.45-.11h-.01zm0-2h-4.9a21.01 21.01 0 0 1 39.61 0h-2.09l-.06-.13-.26.13h-32.31zm30.35 7.68l1.36-.68h1.3v2h-36v-1.15l.34-.17 1.36-.68h2.59l1.36.68a3 3 0 0 0 2.69 0l1.36-.68h2.59l1.36.68a3 3 0 0 0 2.69 0l1.36-.68h2.59l1.36.68a3 3 0 0 0 2.56.06l1.67-.74h3.23l1.67.74a3 3 0 0 0 2.56-.06zM246.18 27l16.37 4.91L278.93 27h-32.75zm-.63 2h.34l16.66 5 16.67-5h.33a3 3 0 1 1 0 6h-34a3 3 0 1 1 0-6zm1.35 8a6 6 0 0 0 5.65 4h20a6 6 0 0 0 5.66-4H246.9z'/%3E%3Cpath d='M159.5 21.02A9 9 0 0 0 151 15h-42a9 9 0 0 0-8.5 6.02 6 6 0 0 0 .02 11.96A8.99 8.99 0 0 0 109 45h42a9 9 0 0 0 8.48-12.02 6 6 0 0 0 .02-11.96zM151 17h-42a7 7 0 0 0-6.33 4h54.66a7 7 0 0 0-6.33-4zm-9.34 26a8.98 8.98 0 0 0 3.34-7h-2a7 7 0 0 1-7 7h-4.34a8.98 8.98 0 0 0 3.34-7h-2a7 7 0 0 1-7 7h-4.34a8.98 8.98 0 0 0 3.34-7h-2a7 7 0 0 1-7 7h-7a7 7 0 1 1 0-14h42a7 7 0 1 1 0 14h-9.34zM109 27a9 9 0 0 0-7.48 4H101a4 4 0 1 1 0-8h58a4 4 0 0 1 0 8h-.52a9 9 0 0 0-7.48-4h-42z'/%3E%3Cpath d='M39 115a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm6-8a6 6 0 1 1-12 0 6 6 0 0 1 12 0zm-3-29v-2h8v-6H40a4 4 0 0 0-4 4v10H22l-1.33 4-.67 2h2.19L26 130h26l3.81-40H58l-.67-2L56 84H42v-6zm-4-4v10h2V74h8v-2h-8a2 2 0 0 0-2 2zm2 12h14.56l.67 2H22.77l.67-2H40zm13.8 4H24.2l3.62 38h22.36l3.62-38z'/%3E%3Cpath d='M129 92h-6v4h-6v4h-6v14h-3l.24 2 3.76 32h36l3.76-32 .24-2h-3v-14h-6v-4h-6v-4h-8zm18 22v-12h-4v4h3v8h1zm-3 0v-6h-4v6h4zm-6 6v-16h-4v19.17c1.6-.7 2.97-1.8 4-3.17zm-6 3.8V100h-4v23.8a10.04 10.04 0 0 0 4 0zm-6-.63V104h-4v16a10.04 10.04 0 0 0 4 3.17zm-6-9.17v-6h-4v6h4zm-6 0v-8h3v-4h-4v12h1zm27-12v-4h-4v4h3v4h1v-4zm-6 0v-8h-4v4h3v4h1zm-6-4v-4h-4v8h1v-4h3zm-6 4v-4h-4v8h1v-4h3zm7 24a12 12 0 0 0 11.83-10h7.92l-3.53 30h-32.44l-3.53-30h7.92A12 12 0 0 0 130 126z'/%3E%3Cpath d='M212 86v2h-4v-2h4zm4 0h-2v2h2v-2zm-20 0v.1a5 5 0 0 0-.56 9.65l.06.25 1.12 4.48a2 2 0 0 0 1.94 1.52h.01l7.02 24.55a2 2 0 0 0 1.92 1.45h4.98a2 2 0 0 0 1.92-1.45l7.02-24.55a2 2 0 0 0 1.95-1.52L224.5 96l.06-.25a5 5 0 0 0-.56-9.65V86a14 14 0 0 0-28 0zm4 0h6v2h-9a3 3 0 1 0 0 6H223a3 3 0 1 0 0-6H220v-2h2a12 12 0 1 0-24 0h2zm-1.44 14l-1-4h24.88l-1 4h-22.88zm8.95 26l-6.86-24h18.7l-6.86 24h-4.98zM150 242a22 22 0 1 0 0-44 22 22 0 0 0 0 44zm24-22a24 24 0 1 1-48 0 24 24 0 0 1 48 0zm-28.38 17.73l2.04-.87a6 6 0 0 1 4.68 0l2.04.87a2 2 0 0 0 2.5-.82l1.14-1.9a6 6 0 0 1 3.79-2.75l2.15-.5a2 2 0 0 0 1.54-2.12l-.19-2.2a6 6 0 0 1 1.45-4.46l1.45-1.67a2 2 0 0 0 0-2.62l-1.45-1.67a6 6 0 0 1-1.45-4.46l.2-2.2a2 2 0 0 0-1.55-2.13l-2.15-.5a6 6 0 0 1-3.8-2.75l-1.13-1.9a2 2 0 0 0-2.5-.8l-2.04.86a6 6 0 0 1-4.68 0l-2.04-.87a2 2 0 0 0-2.5.82l-1.14 1.9a6 6 0 0 1-3.79 2.75l-2.15.5a2 2 0 0 0-1.54 2.12l.19 2.2a6 6 0 0 1-1.45 4.46l-1.45 1.67a2 2 0 0 0 0 2.62l1.45 1.67a6 6 0 0 1 1.45 4.46l-.2 2.2a2 2 0 0 0 1.55 2.13l2.15.5a6 6 0 0 1 3.8 2.75l1.13 1.9a2 2 0 0 0 2.5.8zm2.82.97a4 4 0 0 1 3.12 0l2.04.87a4 4 0 0 0 4.99-1.62l1.14-1.9a4 4 0 0 1 2.53-1.84l2.15-.5a4 4 0 0 0 3.09-4.24l-.2-2.2a4 4 0 0 1 .97-2.98l1.45-1.67a4 4 0 0 0 0-5.24l-1.45-1.67a4 4 0 0 1-.97-2.97l.2-2.2a4 4 0 0 0-3.09-4.25l-2.15-.5a4 4 0 0 1-2.53-1.84l-1.14-1.9a4 4 0 0 0-5-1.62l-2.03.87a4 4 0 0 1-3.12 0l-2.04-.87a4 4 0 0 0-4.99 1.62l-1.14 1.9a4 4 0 0 1-2.53 1.84l-2.15.5a4 4 0 0 0-3.09 4.24l.2 2.2a4 4 0 0 1-.97 2.98l-1.45 1.67a4 4 0 0 0 0 5.24l1.45 1.67a4 4 0 0 1 .97 2.97l-.2 2.2a4 4 0 0 0 3.09 4.25l2.15.5a4 4 0 0 1 2.53 1.84l1.14 1.9a4 4 0 0 0 5 1.62l2.03-.87zM152 207a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm6 2a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-11 1a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-6 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm3-5a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-8 8a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm3 6a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm0 6a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm4 7a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm5-2a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm5 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm4-6a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm6-4a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-4-3a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm4-3a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-5-4a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm-24 6a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm16 5a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm7-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0zm86-29a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm19 9a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm-14 5a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm-25 1a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm5 4a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm9 0a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm15 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm12-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm-11-14a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm-19 0a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm6 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm-25 15c0-.47.01-.94.03-1.4a5 5 0 0 1-1.7-8 3.99 3.99 0 0 1 1.88-5.18 5 5 0 0 1 3.4-6.22 3 3 0 0 1 1.46-1.05 5 5 0 0 1 7.76-3.27A30.86 30.86 0 0 1 246 184c6.79 0 13.06 2.18 18.17 5.88a5 5 0 0 1 7.76 3.27 3 3 0 0 1 1.47 1.05 5 5 0 0 1 3.4 6.22 4 4 0 0 1 1.87 5.18 4.98 4.98 0 0 1-1.7 8c.02.46.03.93.03 1.4v1h-62v-1zm.83-7.17a30.9 30.9 0 0 0-.62 3.57 3 3 0 0 1-.61-4.2c.37.28.78.49 1.23.63zm1.49-4.61c-.36.87-.68 1.76-.96 2.68a2 2 0 0 1-.21-3.71c.33.4.73.75 1.17 1.03zm2.32-4.54c-.54.86-1.03 1.76-1.49 2.68a3 3 0 0 1-.07-4.67 3 3 0 0 0 1.56 1.99zm1.14-1.7c.35-.5.72-.98 1.1-1.46a1 1 0 1 0-1.1 1.45zm5.34-5.77c-1.03.86-2 1.79-2.9 2.77a3 3 0 0 0-1.11-.77 3 3 0 0 1 4-2zm42.66 2.77c-.9-.98-1.87-1.9-2.9-2.77a3 3 0 0 1 4.01 2 3 3 0 0 0-1.1.77zm1.34 1.54c.38.48.75.96 1.1 1.45a1 1 0 1 0-1.1-1.45zm3.73 5.84c-.46-.92-.95-1.82-1.5-2.68a3 3 0 0 0 1.57-1.99 3 3 0 0 1-.07 4.67zm1.8 4.53c-.29-.9-.6-1.8-.97-2.67.44-.28.84-.63 1.17-1.03a2 2 0 0 1-.2 3.7zm1.14 5.51c-.14-1.21-.35-2.4-.62-3.57.45-.14.86-.35 1.23-.63a2.99 2.99 0 0 1-.6 4.2zM275 214a29 29 0 0 0-57.97 0h57.96zM72.33 198.12c-.21-.32-.34-.7-.34-1.12v-12h-2v12a4.01 4.01 0 0 0 7.09 2.54c.57-.69.91-1.57.91-2.54v-12h-2v12a1.99 1.99 0 0 1-2 2 2 2 0 0 1-1.66-.88zM75 176c.38 0 .74-.04 1.1-.12a4 4 0 0 0 6.19 2.4A13.94 13.94 0 0 1 84 185v24a6 6 0 0 1-6 6h-3v9a5 5 0 1 1-10 0v-9h-3a6 6 0 0 1-6-6v-24a14 14 0 0 1 14-14 5 5 0 0 0 5 5zm-17 15v12a1.99 1.99 0 0 0 1.22 1.84 2 2 0 0 0 2.44-.72c.21-.32.34-.7.34-1.12v-12h2v12a3.98 3.98 0 0 1-5.35 3.77 3.98 3.98 0 0 1-.65-.3V209a4 4 0 0 0 4 4h16a4 4 0 0 0 4-4v-24c.01-1.53-.23-2.88-.72-4.17-.43.1-.87.16-1.28.17a6 6 0 0 1-5.2-3 7 7 0 0 1-6.47-4.88A12 12 0 0 0 58 185v6zm9 24v9a3 3 0 1 0 6 0v-9h-6z'/%3E%3Cpath d='M-17 191a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm19 9a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm-14 5a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm-25 1a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm5 4a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm9 0a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm15 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm12-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2H4zm-11-14a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm-19 0a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2h-2zm6 5a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2h-2a1 1 0 0 1-1-1zm-25 15c0-.47.01-.94.03-1.4a5 5 0 0 1-1.7-8 3.99 3.99 0 0 1 1.88-5.18 5 5 0 0 1 3.4-6.22 3 3 0 0 1 1.46-1.05 5 5 0 0 1 7.76-3.27A30.86 30.86 0 0 1-14 184c6.79 0 13.06 2.18 18.17 5.88a5 5 0 0 1 7.76 3.27 3 3 0 0 1 1.47 1.05 5 5 0 0 1 3.4 6.22 4 4 0 0 1 1.87 5.18 4.98 4.98 0 0 1-1.7 8c.02.46.03.93.03 1.4v1h-62v-1zm.83-7.17a30.9 30.9 0 0 0-.62 3.57 3 3 0 0 1-.61-4.2c.37.28.78.49 1.23.63zm1.49-4.61c-.36.87-.68 1.76-.96 2.68a2 2 0 0 1-.21-3.71c.33.4.73.75 1.17 1.03zm2.32-4.54c-.54.86-1.03 1.76-1.49 2.68a3 3 0 0 1-.07-4.67 3 3 0 0 0 1.56 1.99zm1.14-1.7c.35-.5.72-.98 1.1-1.46a1 1 0 1 0-1.1 1.45zm5.34-5.77c-1.03.86-2 1.79-2.9 2.77a3 3 0 0 0-1.11-.77 3 3 0 0 1 4-2zm42.66 2.77c-.9-.98-1.87-1.9-2.9-2.77a3 3 0 0 1 4.01 2 3 3 0 0 0-1.1.77zm1.34 1.54c.38.48.75.96 1.1 1.45a1 1 0 1 0-1.1-1.45zm3.73 5.84c-.46-.92-.95-1.82-1.5-2.68a3 3 0 0 0 1.57-1.99 3 3 0 0 1-.07 4.67zm1.8 4.53c-.29-.9-.6-1.8-.97-2.67.44-.28.84-.63 1.17-1.03a2 2 0 0 1-.2 3.7zm1.14 5.51c-.14-1.21-.35-2.4-.62-3.57.45-.14.86-.35 1.23-.63a2.99 2.99 0 0 1-.6 4.2zM15 214a29 29 0 0 0-57.97 0h57.96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+</style>
+<body style="background-image:url('https://e0.pxfuel.com/wallpapers/497/150/desktop-wallpaper-hopped-the-original-background-if-you-want-to-use-whatsapp-dark-mode-go-to-settings-chats-background-and-use-this-r-whatsapp.jpg') ;">
+<section class="msger"  >
+
+  <header class="msger-header" style="background-image:url('https://th.bing.com/th/id/OIP.cMDu1ud7Dj1CWBuRGZ_zVQHaEK?w=1280&h=720&rs=1&pid=ImgDetMain') ;">
+    <div class="msger-header-title">
+      <div class="top" style="display: inline-flex;">
+        <div class="open-message">
+          <i class="fa fa-chevron-left"></i>
+        </div>
+        <div class="name" id="open" style="color: rgb(11, 160, 6);font-family: 'Times New Roman', Times, serif;font-weight: bolder;">
+          <i class="fas fa-comment-alt"></i> Tejashwani rathore
+          <p style="font-size: x-small;">last seen 2 min ago</p>
+        </div>
+        <div class="button-container" style="margin-left: 500px;">
+          <button>
+            <i class="fa fa-phone">
+              <img src="https://th.bing.com/th/id/OIP.d0TEpGeBbzPA1jGzqflyHQHaHS?rs=1&pid=ImgDetMain" width="50px">
+            </i>
+          </button>
+          <button>
+            <i class="fa fa-camera">
+              <img src="https://th.bing.com/th/id/OIP.tHR6_YuqvfoEKxmIkT26LwHaHa?rs=1&pid=ImgDetMain" width="50px">
+            </i>
+          </button>
+          <button>
+            <i class="fa fa-folder">
+              <img src="https://static.vecteezy.com/system/resources/previews/000/439/769/original/vector-folder-icon.jpg" width="50px">
+            </i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="msger-header-options">
+      <span><i class="fas fa-cog"></i></span>
+    </div>
+  </header>
+
+  <main class="msger-chat" style="background-image: url('https://th.bing.com/th/id/OIP.TEQEt7TB_Ole_i-ip_nM1wHaKa?w=735&h=1033&rs=1&pid=ImgDetMain');">
+    <div class="msg left-msg">
+      <div
+              class="msg-img"
+              style="background-image: url('https://doximity-res.cloudinary.com/images/f_auto,q_auto,t_profile_photo_320x320/ytsvkctji0x9jfyfs6tm/haley-strunk-do-harrogate-tn.jpg')"
+      ></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">teju</div>
+          <div class="msg-info-time">12:55</div>
+        </div>
+
+        <div class="msg-text">
+          Hi 😄
+        </div>
+      </div>
+    </div>
+
+    <div class="msg right-msg">
+      <div
+              class="msg-img"
+              style="background-image: url('https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg')"
+      ></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">vishesh</div>
+          <div class="msg-info-time">12:56</div>
+        </div>
+        <div class="msg-text">
+          Hello
+        </div>
+
+      </div>
+    </div>
+    <div class="msg-bubble">
+      <div class="msg-info">
+        <div class="msg-info-name">teju</div>
+        <div class="msg-info-time">12:57</div>
+      </div>
+
+      <div class="msg-text">
+        aaj ka kya plan hai project submit karna hai ki nahin aur assigment ho gaya 😄
+      </div>
+    </div>
+    </div>
+    <div class="msg right-msg">
+      <div
+              class="msg-img"
+              style="background-image: url('https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg')"
+      ></div>
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">vishesh</div>
+          <div class="msg-info-time">12:50</div>
+        </div>
+        <div class="msg-text">
+          majak karnai ki adat gayi nahin tumhari  kar liya complete 😄
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <form class="msger-inputarea" style="background-image: url('https://th.bing.com/th/id/OIP.KTJ0nRJbeqkr1Z7Cmi90rAHaEK?w=1500&h=844&rs=1&pid=ImgDetMain');">
+    <input type="text" class="msger-input" placeholder="Enter your message...">
+    <button type="submit" class="msger-send-btn">Send</button>
+  </form>
+</section>
+<script>
+  const msgerForm = get(".msger-inputarea");
+  const msgerInput = get(".msger-input");
+  const msgerChat = get(".msger-chat");
+
+  const BOT_MSGS = [
+    "Hi, how are you?",
+    "Ohh... I can't understand what you trying to say. Sorry!",
+    "I like to play games... But I don't know how to play!",
+    "Sorry if my answers are not relevant. :))",
+    "I feel sleepy! :(",
+    "can you talk with me  later",
+    "ok",
+    "thank you",
+    "working with my project",
+    "can you please guide me",
+    "HELLO","HI","HEY THERE","HEY","HI DUDE",
+    "GM","GOOD MORNING","GOOD MORNING vishesh", "GOOD MORNING vishesh",
+    "BAD","NOT BAD","USELESS","NOT WORKING","NOT GOOD",
+    "GOOD EVNG","GOOD EVENING","GOOD EVENING vishesh","GOOD EVENING vishesh"
+    ,"GOON NIGHT","I'M FEELING SLEEPY",
+    ,"NICE WORKING", "NICE CODE","NICE","WOW","WOW IT'S WORKING","GREAT CODE","AWESOME CODE","IT'S NICE","AWESOME CODE BRO","IT'S GOOD","OH MY GOD","OMG","OHO","NICE TO MEET YOU","NICE TO MEET U","NICE TO SEE YOU","NICE TO C U"
+    ,"I HATE YOU","I LOVE YOU","I MISS YOU",
+    "GOOD AFTERNOON","GOOD AFTERNOON vishesh","GOOD AFTERNOON vishesh" ,
+    ,"GOOD","👍🏻", "☺️","😅","LOL","ME TOO",
+    ,"HOW R U?","H R U?", "HOW ARE YOU?", "HRU?","HRU", "HOW R U","H R U", "HOW ARE YOU",
+    "I'M GOOD","I'M FINE", "I'M FINE U", "I AM FINE","I'M FINE AND HOW ARE YOU", "MEE TOO", "FINE","FINE:)","FINE :)", "MARVELOUS","AWESOME","FINE☺️","GREAT",
+    "WHO R U?","W R U?", "WHO ARE YOU?", "WRU?","WRU", "WHO R U","W R U", "WHO ARE YOU","WHAT IS YOUR NAME","WHAT'S YOUR NAME",
+    "WHAT R U DOING?","WHAT ARE YOU DOING?", "WHAT'S UP", "WHAT'S UP BUDDY","WHAT ARE YOU DOING",
+    "OKAY BYE","GOOD BYE", "BYE","GOODBYE","TATA","SEE YOU LATER","SEE YOU AGAIN",
+    "THANKS","THANK YOU",
+    "WHAT","WHAT?","WHICH","WHICH?","WHEN","WHEN?","REALLY?",
+    "HMM","HMMM","HMMMM","OKAY","OK","KK","OKK","OK?","OK ?","YEAH",
+
+
+  ]
+  const BOT_IMG = "https://doximity-res.cloudinary.com/images/f_auto,q_auto,t_profile_photo_320x320/ytsvkctji0x9jfyfs6tm/haley-strunk-do-harrogate-tn.jpg";
+  const PERSON_IMG = "https://ilarge.lisimg.com/image/9927376/740full-felix-bujo.jpg";
+  const BOT_NAME = "teju";
+  const PERSON_NAME = "vishesh";
+
+  msgerForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const msgText = msgerInput.value;
+    if (!msgText) return;
+
+    appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+    msgerInput.value = "";
+
+    botResponse();
+  });
+
+  function appendMessage(name, img, side, text) {
+
+    const msgHTML = `
+    <div class="msg ${side}-msg">
+      <div class="msg-img" style="background-image: url(${img})"></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">${name}</div>
+          <div class="msg-info-time">${formatDate(new Date())}</div>
+        </div>
+
+        <div class="msg-text">${text}</div>
+      </div>
+    </div>
+  `;
+
+    msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+    msgerChat.scrollTop += 500;
+  }
+
+  function botResponse() {
+    const r = random(0, BOT_MSGS.length - 1);
+    const msgText = BOT_MSGS[r];
+    const delay = msgText.split(" ").length * 100;
+
+    setTimeout(() => {
+      appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+    }, delay);
+  }
+
+
+  function get(selector, root = document) {
+    return root.querySelector(selector);
+  }
+
+  function formatDate(date) {
+    const h = "0" + date.getHours();
+    const m = "0" + date.getMinutes();
+
+    return `${h.slice(-2)}:${m.slice(-2)}`;
+  }
+
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+</script>
+</body>
+</html>
+------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        list-style:none;
+        transition:all .3s;
+        font-family: 'Roboto', sans-serif;
+        user-select:none;
+    }
+
+    body{
+
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+        background:#30333a;
+    }
+
+
+    .note{
+
+        top:20px;
+        left:20px;
+        text-transform:uppercase;
+        color:#888a94;
+        font-weight:700;
+        font-family: 'Rajdhani', sans-serif;
+    }
+
+
+    .container{
+        width:320px;
+        height:550px;
+        background:#1f2229;
+        color:#edeff3;
+        border-radius:20px;
+        overflow:hidden;
+        position:relative;
+        box-shadow:  24px 24px 77px #121418,
+        -24px -24px 77px #2c303a;
+        border:1px solid #222;
+    }
+
+
+    .container .all-chats{
+        width:100%;
+        height:100%;
+        position:absolute;
+        z-index:0;
+        background:#1f2229;
+    }
+
+
+
+    .container .signal{
+        display:flex;
+        justify-content:space-between;
+        padding:12px 15px;
+        font-size:.80em;
+        padding-top:18px;
+    }
+
+
+    .container .signal span{
+        display:flex;
+        gap:5px;
+    }
+
+
+    .container .signal span .fa-wifi{
+        background-image: linear-gradient(#888, #fff);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation:wifi 1s linear infinite;
+    }
+
+
+    @keyframes wifi{
+
+        0%{
+            background-image: linear-gradient(#888, #fff);
+        }
+        50%{
+            background-image: linear-gradient(#888,#fff, #fff);
+        }
+
+        80%{
+            background-image: linear-gradient(#888,#fff,#fff, #fff);
+        }
+
+        100%{
+            background-image: linear-gradient(#fff, #fff);
+        }
+    }
+
+
+    .container .signal span .fa-signal{
+        background-image: linear-gradient(-90deg,#888, #fff);
+        -webkit-background-clip: text;
+        color: transparent;
+        animation:signal 6s linear infinite;
+    }
+
+    @keyframes signal{
+
+        0%{
+            background-image: linear-gradient(-90deg,#888, #fff);
+        }
+        50%{
+            background-image: linear-gradient(-90deg,#888,#fff, #fff);
+        }
+
+        80%{
+            background-image: linear-gradient(-90deg,#888,#fff,#fff,#fff);
+        }
+
+        100%{
+            background-image: linear-gradient(-90deg,#fff, #fff);
+        }
+    }
+
+
+    .container .all-chats .myProfile{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:6px 15px;
+        padding-bottom:10px;
+    }
+
+    .container .all-chats .myProfile span{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+        text-transform:capitalize;
+        font-size:1.5em;
+        font-weight:700;
+    }
+
+    .container .all-chats .myProfile span img{
+        width:35px;
+        height:35px;
+        object-fit:cover;
+        background:#111;
+        padding:3px;
+        border-radius:50%;
+        box-shadow:  2px 2px 8px #000,
+        -2px -2px 8px #444;
+    }
+
+
+    .container .all-chats .myProfile .plus{
+        background:#db5756;
+        width:32px;
+        height:32px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius:50%;
+        overflow:hidden;
+        cursor:pointer;
+        box-shadow:  3px 3px 8px #000,
+        -3px -3px 8px #444,
+        inset 0 0 4px 0px #C54B4A;
+    }
+
+
+    .container .all-chats .myProfile .plus input{
+        width:100%;
+        height:100%;
+        opacity:0;
+        cursor:pointer;
+    }
+
+    .container .all-chats .myProfile .plus .fa-plus{
+        position:absolute;
+        cursor:pointer;
+    }
+
+
+    .container .all-chats input{
+        border:none;
+        outline:none;
+        width:90%;
+        margin:15px 15px;
+        background:none;
+        color:#eee;
+        font-size:1em;
+        padding:13px 25px;
+        border-radius:50px;
+        background: #1f2229;
+        box-shadow: inset 5px 5px 10px #111216,
+        inset -5px -5px 10px #2d323c;
+        border:1px solid #222;
+        caret-color:#CE5250;
+    }
+
+    .container .all-chats input:focus{
+        background: linear-gradient(145deg, #1c1f25, #21242c);
+        box-shadow:  5px 5px 7px #1a1c22,
+        -5px -5px 7px #242830;
+    }
+
+
+    .container .all-chats input::placeholder{
+        color:#eee;
+        text-transform:capitalize;
+    }
+
+
+
+    .container .all-chats .nav{
+        width:93%;
+        height:70px;
+        position:absolute;
+        left:50%;
+        bottom:70px;
+        transform:translate(-50%,0);
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:0 20px;
+        border-radius:50px;
+        background: #1f2229;
+        box-shadow:  5px 5px 7px #1a1c22,
+        -5px -5px 7px #242830;
+        border:1px solid #222;
+    }
+
+
+    .container .all-chats .bar,
+    .container .personal-chats .bar{
+        width:100px;
+        height:4px;
+        background:#888a94;
+        position:absolute;
+        bottom:50px;
+        left:50%;
+        transform:translate(-50%,0);
+        border-radius:50px;
+        box-shadow:inset 0 0 10px #444;
+    }
+
+
+    .container .all-chats .nav i{
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background: linear-gradient(145deg, #21242c, #1c1f25);
+        box-shadow:  5px 5px 7px #1a1d22,
+        -5px -5px 7px #242730;
+        border:1px solid #222;
+        cursor:pointer;
+    }
+
+    .container .all-chats .nav i.active{
+        color:#A94443;
+        background: #1f2229;
+        box-shadow: inset 5px 5px 7px #1a1c22,
+        inset -5px -5px 7px #242830;
+    }
+
+    .container .all-chats .nav i:hover{
+        color:#A94443;
+        background: #1f2229;
+        box-shadow: inset 5px 5px 7px #1a1c22,
+        inset -5px -5px 7px #242830;
+    }
+
+
+
+    .container .all-chats .chats-container{
+        width:100%;
+        height:240px;
+        overflow-y:scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        padding-bottom:10px;
+    }
+
+    .container .all-chats .chats-container::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .container .all-chats .chats-container ul li{
+        display:flex;
+        align-items:center;
+        gap:20px;
+        padding:0px 0px;
+        margin-top:10px;
+    }
+
+
+
+    .container .all-chats .chats-container ul li .content{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:5px;
+        padding:15px 0px;
+        padding-right:15px;
+        border-bottom:1px solid #888a94;
+        width:calc(100% - 85px);
+        cursor:pointer;
+        transition:all .1s;
+    }
+
+    .container .all-chats .chats-container ul li .content:hover span .name{
+        color:#CE5250;
+    }
+
+    .container .all-chats .chats-container ul li .content:hover{
+        border-bottom:1px solid #CE5250;
+    }
+
+    .container .all-chats .chats-container ul li img{
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        object-fit:cover;
+        background:#111;
+        padding:3px;
+        margin-left:15px;
+        box-shadow:  2px 2px 8px #000,
+        -2px -2px 8px #444;
+        cursor:pointer;
+    }
+
+
+    .container .all-chats .chats-container ul li .content span:nth-child(2){
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:end;
+    }
+
+    .container .all-chats .chats-container ul li .content span .name{
+        font-weight:700;
+        text-transform:capitalize;
+    }
+
+    .container .all-chats .chats-container ul li .content span .msg{
+        font-size:.70em;
+        color:#888a94;
+        margin-top:5px;
+    }
+
+
+    .container .all-chats .chats-container ul li .content span .timing{
+        color:#db5756;
+        font-size:.80em;
+    }
+
+
+    .container .all-chats .chats-container ul li .content span .total-msg{
+        background:#CE5250;
+        display:inline-block;
+        font-size:.85em;
+        font-weight:700;
+        text-align:center;
+        padding:3px 5px;
+        border-radius:5px;
+        box-shadow:  2px 2px 8px #000,
+        -2px -2px 8px #444;
+    }
+
+
+
+    /*----chating----*/
+    .container .personal-chats{
+        width:100%;
+        height:100%;
+        background:#1f2229;
+        transition:all .5s;
+        position:absolute;
+        right:-100%;
+    }
+
+
+    .container .personal-chats .user-details{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:10px 15px;
+    }
+
+
+    .container .personal-chats .user-details span{
+        display:flex;
+        align-items:center;
+        gap:20px;
+    }
+
+    .container .personal-chats .user-details span span img{
+        width:35px;
+        height:35px;
+        object-fit:cover;
+        background:#111;
+        padding:3px;
+        border-radius:50%;
+        box-shadow:  2px 2px 8px #000,
+        -2px -2px 8px #444;
+    }
+
+
+    .container .personal-chats .user-details span .fa-arrow-left,
+    .container .personal-chats .user-details .fa-phone{
+        background:#222;
+        color:#db5756;
+        width:28px;
+        height:28px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        border-radius:50%;
+        box-shadow:  3px 3px 8px #000,
+        -3px -3px 8px #444;
+        cursor:pointer;
+    }
+
+
+    .container .personal-chats .user-details .fa-phone{
+        width:35px;
+        height:35px;
+    }
+
+
+    .container .personal-chats .user-details span .fa-arrow-left:hover,
+    .container .personal-chats .user-details .fa-phone:hover{
+        box-shadow:inset  3px 3px 8px #000,
+        inset -3px -3px 8px #444;
+    }
+
+
+    .container .personal-chats .user-details span span div .user-name{
+        text-transform:capitalize;
+        font-size:.90em;
+        font-weight:700;
+    }
+
+
+    .container .personal-chats .user-details span span div .stutes{
+        text-transform:capitalize;
+        font-size:.60em;
+    }
+
+
+    .container .personal-chats .msg-box{
+        width:100%;
+        padding:0 5px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:8px;
+        position:absolute;
+        bottom:80px;
+    }
+
+    .container .personal-chats .submit{
+        position:absolute;
+        bottom:86px;
+        left:20px;
+        transform:rotateX(190deg);
+        width:30px;
+        height:30px;
+        background: linear-gradient(145deg, #ea5d5c, #c54e4d);
+        box-shadow:  3px 3px 8px #000,
+        -3px -3px 8px #444,
+        inset 0 0 20px #C34B49;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-weight:700;
+        font-size:1.3em;
+        cursor:pointer;
+    }
+
+    .container .personal-chats .submit:hover{
+        box-shadow: inset 3px 3px 8px #582322,
+        inset -3px -3px 8px #ff8b8a;
+    }
+
+
+    .container .personal-chats .msg-box .msg{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:6px;
+        color:#db5756;
+        font-size:1.1em;
+        padding:13px 14px;
+        border-radius:50px;
+        background: #1f2229;
+        box-shadow: inset 4px 4px 8px #111216,
+        inset -4px -4px 8px #2d323c;
+        border:1px solid #222;
+        caret-color:#CE5250;
+        width:80%;
+    }
+
+
+    .container .personal-chats .msg-box .msg textarea{
+        border:none;
+        outline:none;
+        resize:none;
+        overflow: auto;
+        height:18px;
+        padding:1px 5px;
+        background:none;
+        color:#eee;
+        max-height:50px;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .container .personal-chats .msg-box .msg textarea::placeholder{
+        font-size:.90em;
+    }
+
+
+    .container .personal-chats .msg-box .msg textarea::-webkit-scrollbar {
+        display: none;
+    }
+
+    .container .personal-chats .msg-box .msg i{
+        cursor:pointer;
+    }
+
+    .container .personal-chats .msg-box .msg i:hover{
+        color:#A8413F;
+    }
+
+
+
+    .container .personal-chats .msg-box .fa-microphone{
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        color:#eee;
+        background: linear-gradient(145deg, #ea5d5c, #c54e4d);
+        box-shadow:  3px 3px 8px #000,
+        -3px -3px 8px #444,
+        inset 0 0 20px #C34B49;
+        cursor:pointer;
+    }
+
+
+    .container .personal-chats .msg-box .fa-microphone:hover{
+        box-shadow: inset 3px 3px 8px #582322,
+        inset -3px -3px 8px #ff8b8a;
+    }
+
+
+
+
+    .container .personal-chats .text-container{
+        width:100%;
+        height:340px;
+        padding:0 20px;
+        overflow-y:scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+
+
+    .container .personal-chats .text-container::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .container .personal-chats .text-container .when{
+        text-align:center;
+        text-transform:capitalize;
+        color:#fff;
+        font-size:.70em;
+        margin-top:10px;
+        margin-bottom:20px;
+    }
+
+
+    .container .personal-chats .text-container .me{
+        display:flex;
+        justify-content:end;
+    }
+
+    .container .personal-chats .text-container .me div{
+        width:auto;
+        text-align:right;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:10px;
+        padding:10px 15px;
+        background: #D53E3B;
+        box-shadow:  2px 2px 6px #0c0e10,
+        -3px -3px 6px #323642;
+        border-top-right-radius:10px;
+        border-top-left-radius:10px;
+        border-bottom-left-radius:10px;
+    }
+
+    .container .personal-chats .text-container .me div p{
+        width:100%;
+        font-size:.95em;
+    }
+
+    .container .personal-chats .text-container .me div .time{
+        font-size:.70em;
+        width:auto;
+        height:100%;
+        display:flex;
+        align-items:end;
+        justify-content:center;
+    }
+
+
+    .container .personal-chats .text-container .they{
+        display:flex;
+        justify-content:start;
+    }
+
+
+
+    .container .personal-chats .text-container .they div{
+        width:auto;
+        text-align:right;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:10px;
+        padding:10px 15px;
+        background: #1f2229;
+        box-shadow:  2px 2px 6px #0c0e10,
+        -2px -2px 6px #323642;
+        border-top-right-radius:10px;
+        border-top-left-radius:10px;
+        border-bottom-right-radius:10px;
+    }
+
+
+    .container .personal-chats .text-container .msg{
+        margin:20px 0;
+    }
+
+
+    .container .personal-chats .text-container .they div p{
+        width:100%;
+        font-size:.95em;
+    }
+
+    .container .personal-chats .text-container .they div .time{
+        font-size:.70em;
+        width:auto;
+        height:100%;
+        display:flex;
+        align-items:end;
+        justify-content:center;
+    }
+
+
+
+    /*-----profile zoom -----*/
+    .profileZoom{
+        position:absolute;
+        left:0;
+        top:0;
+        z-index:2;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,.6);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        transition:all .2s;
+        transform:scale(0);
+    }
+
+
+    .profileZoom .profile{
+        width:200px;
+        height:200px;
+        position:relative;
+        top:-30px;
+    }
+
+    .profileZoom .profile img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .profileZoom .profile .profileName{
+        position:absolute;
+        top:5px;
+        left:5px;
+        text-transform:capitalize;
+    }
+
+    .profileZoom .profile .fa-info-circle{
+        position:absolute;
+        bottom:5px;
+        right:5px;
+        font-size:.80em;
+    }
+
+
+
+
+    /*----calling----*/
+    .container .calling-container{
+        width:100%;
+        height:100%;
+        background:#1f2229;
+        transition:all .5s;
+        position:absolute;
+        right:-100%;
+        text-align:center;
+    }
+
+    .container .calling-container .calling-name{
+        text-transform:capitalize;
+        font-weight:700;
+        font-size:1.2em;
+        margin-top:20px;
+    }
+
+    .container .calling-container .calling-status{
+        font-size:.80em;
+        width:85px;
+        height:16px;
+        overflow:hidden;
+        position:relative;
+        left:50%;
+        transform:translate(-50%,0);
+        animation:callAnimate .8s linear infinite;
+    }
+
+
+    @keyframes callAnimate{
+        0%,100%{
+            width:85px;
+        }
+        50%{
+            width:95px;
+        }
+    }
+
+    .container .calling-container img{
+        width:200px;
+        height:200px;
+        border-radius:50%;
+        object-fit:cover;
+        margin-top:55px;
+        box-shadow:  3px 3px 5px #000,
+        -2px -2px 5px #222;
+    }
+
+
+    .container .calling-container .calling-icon{
+        position:absolute;
+        left:50%;
+        bottom:100px;
+        transform:translate(-50%,0);
+        width:250px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+
+    .container .calling-container .calling-icon div{
+        text-transform:capitalize;
+    }
+
+    .container .calling-container .calling-icon div p{
+        font-size:.60em;
+        margin-top:5px;
+    }
+
+    .container .calling-container .calling-icon div .fa-phone{
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:1.4em;
+        cursor:pointer;
+        box-shadow:  3px 3px 3px #000,
+        -2px -2px 3px #222;
+    }
+
+
+    .container .calling-container .calling-icon div .accept:hover{
+        animation:call .4s linear infinite;
+    }
+
+    @keyframes call {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+
+
+    .container .calling-container .calling-icon div .decline:hover{
+        animation:callDecline .4s linear infinite;
+    }
+
+    @keyframes callDecline {
+        0% { transform: translate(1px, 1px) rotate(140deg); }
+        10% { transform: translate(-1px, -2px) rotate(141deg); }
+        20% { transform: translate(-3px, 0px) rotate(140deg); }
+        30% { transform: translate(3px, 2px) rotate(140deg); }
+        40% { transform: translate(1px, -1px) rotate(140deg); }
+        50% { transform: translate(-1px, 2px) rotate(139deg); }
+        60% { transform: translate(-3px, 1px) rotate(140deg); }
+        70% { transform: translate(3px, 1px) rotate(141deg); }
+        80% { transform: translate(-1px, -1px) rotate(141deg); }
+        90% { transform: translate(1px, 2px) rotate(140deg); }
+        100% { transform: translate(1px, -2px) rotate(141deg); }
+    }
+
+    .container .calling-container .calling-icon div .decline{
+        transform:rotate(140deg);
+        background:#DD0200;
+    }
+
+
+    .container .calling-container .calling-icon div .accept{
+        background:#04B72F;
+    }
+
+</style>
+<body style="background-image: url('https://www.teahub.io/photos/full/200-2007710_free-download-animated-gif-for-powerpoint-gif-wallpaper.gif')">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Rajdhani&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+
+<div class="container" style="width: 700px;height: 700px ;background-image:url('https://th.bing.com/th/id/OIP.XUImy9oEYWsW0yGCaTtI2QHaEU?rs=1&pid=ImgDetMain');margin-top: 40px;margin-left: 400px">
+    <div class="signal">
+        <p class="time">9:10</p>
+        <span>
+      <i class="fa fa-signal"></i>
+      <i class="fa fa-wifi"></i>
+      <i class="fa fa-battery"></i>
+    </span>
+    </div>
+
+    <div class="all-chats" style="background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37f002aa-032d-480b-9aa7-474adef47ed6/daqohse-f79cb156-0096-4748-9f7e-39b15cf2e86e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ZjAwMmFhLTAzMmQtNDgwYi05YWE3LTQ3NGFkZWY0N2VkNlwvZGFxb2hzZS1mNzljYjE1Ni0wMDk2LTQ3NDgtOWY3ZS0zOWIxNWNmMmU4NmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J-x32M2EVAjG7wBPe_hvxGgyKH1dUGhBaoYqYjhUXW4')">
+        <div class="myProfile" style="background-image: url('https://i.makeagif.com/media/9-02-2016/ENpm3c.gif')">
+     <span>
+      <img class="meProfile" src="https://th.bing.com/th/id/OIP.XwQl1fgL8Sj_byE6Ca2xNQHaJQ?rs=1&pid=ImgDetMain" onclick="zoomProfile('me',` ${document.getElementsByClassName('meProfile')[0].src}`)" alt="">
+      <p>Vishesh kumar prajapati</p>
+     </span>
+
+            <div class="plus">
+                <i class="fa fa-plus"></i>
+                <input type="file" onchange="profileUpload(event)">
+            </div>
+
+        </div>
+
+        <input type="text" placeholder="search" onchange="search()" onkeydown="search()" onkeyup="search()" onkeypress="search()" class="search">
+
+        <div class="chats-container"  style="height: 600px">
+            <ul>
+                <li>
+                    <img src="https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain" onclick="zoomProfile('gudiya','https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain')">
+
+                    <div class="content" onclick="chatShow('gudiya','https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain')">
+            <span>
+              <p class="name">
+                gudiya
+              </p>
+              <p class="msg">
+             are you here?   Can you talk with me for a couple of minutes
+              </p>
+            </span>
+
+                        <span>
+              <p class="timing">
+                6:45
+              </p>
+              <p class="total-msg">
+                5
+              </p>
+            </span>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://preview.redd.it/1zhm9dkq3zk91.jpg?width=640&crop=smart&auto=webp&s=6998c779e14875619a48633ad68cd48af7fbbb78" onclick="zoomProfile('Tejashwani','https://preview.redd.it/1zhm9dkq3zk91.jpg?width=640&crop=smart&auto=webp&s=6998c779e14875619a48633ad68cd48af7fbbb78')">
+
+                    <div class="content" onclick="chatShow('Tejashwani','https://preview.redd.it/1zhm9dkq3zk91.jpg?width=640&crop=smart&auto=webp&s=6998c779e14875619a48633ad68cd48af7fbbb78')">
+            <span>
+              <p class="name">
+                tejashwani singh
+              </p>
+              <p class="msg">
+                  hi vishesh what are you doing today?
+              </p>
+            </span>
+
+                        <span>
+              <p class="timing">
+                10:15
+              </p>
+              <p class="total-msg">
+                9+
+              </p>
+            </span>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://www.pixelstalk.net/wp-content/uploads/2016/10/Cute-Beautiful-Girl-Background.jpg" onclick="zoomProfile('sagun','https://www.pixelstalk.net/wp-content/uploads/2016/10/Cute-Beautiful-Girl-Background.jpg')">
+
+                    <div class="content" onclick="chatShow('sagun','https://www.pixelstalk.net/wp-content/uploads/2016/10/Cute-Beautiful-Girl-Background.jpg')">
+            <span>
+              <p class="name">
+                sagun yadav
+              </p>
+              <p class="msg">
+                Where are you at? I'm here waiting for couple  of minutes.
+              </p>
+            </span>
+
+                        <span>
+              <p class="timing">
+                10 min
+              </p>
+              <p class="total-msg">
+                2
+              </p>
+            </span>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://images.bravo.de/kristen-stewart-grosse-sorgen-um-twilightjpeg,id=a6590d6a,b=bravo,w=1100,rm=sk.jpeg" onclick="zoomProfile('Anjali','https://images.bravo.de/kristen-stewart-grosse-sorgen-um-twilightjpeg,id=a6590d6a,b=bravo,w=1100,rm=sk.jpeg')">
+
+                    <div class="content" onclick="chatShow('Anjali','https://images.bravo.de/kristen-stewart-grosse-sorgen-um-twilightjpeg,id=a6590d6a,b=bravo,w=1100,rm=sk.jpeg')">
+            <span>
+              <p class="name">
+                anjali srivastava
+              </p>
+              <p class="msg">
+                are you sure? that's good project for hackathon ?
+              </p>
+            </span>
+
+                        <span>
+              <p class="timing" style="color:#888a94;margin-top:-15px;">
+                12:35
+              </p>
+                             <p class="total-msg">
+                19+
+              </p>
+            </span>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://uploads.jovemnerd.com.br/wp-content/uploads/Emily-Blunt-Mary-Poppins-Returns-1210x544.jpg" onclick="zoomProfile('sweta','https://uploads.jovemnerd.com.br/wp-content/uploads/Emily-Blunt-Mary-Poppins-Returns-1210x544.jpg')">
+
+                    <div class="content" onclick="chatShow('Sweta','https://uploads.jovemnerd.com.br/wp-content/uploads/Emily-Blunt-Mary-Poppins-Returns-1210x544.jpg')">
+            <span>
+              <p class="name">
+                sweta arora
+              </p>
+              <p class="msg">
+                please call me .
+              </p>
+            </span>
+
+                        <span>
+              <p class="timing" style="color:#888a94;margin-top:-15px;">
+                10:12
+              </p>
+                             <p class="total-msg">
+                7
+              </p>
+            </span>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="profileZoom" >
+                <div class="profile" >
+                    <img src="https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain">
+                    <p class="profileName">gudiya</p>
+                    <i class="fa fa-info-circle"></i>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="nav">
+            <i class='fas fa-comment-alt active'></i>
+            <i class="fa fa-camera"></i>
+            <i class="fa fa-barcode"></i>
+            <i class="fa fa-gear"></i>
+        </div>
+
+        <div class="bar"></div>
+    </div>
+
+
+
+    <div class="personal-chats" style="background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37f002aa-032d-480b-9aa7-474adef47ed6/daqohse-f79cb156-0096-4748-9f7e-39b15cf2e86e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ZjAwMmFhLTAzMmQtNDgwYi05YWE3LTQ3NGFkZWY0N2VkNlwvZGFxb2hzZS1mNzljYjE1Ni0wMDk2LTQ3NDgtOWY3ZS0zOWIxNWNmMmU4NmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J-x32M2EVAjG7wBPe_hvxGgyKH1dUGhBaoYqYjhUXW4')">
+        <div class="user-details" style="background-image: url('https://wallpapercave.com/wp/wp2757950.gif')">
+      <span >-
+      <i class="fa fa-arrow-left" onclick="document.getElementsByClassName('personal-chats')[0].style.right='-100%';"></i>
+        <span>
+          <img src="https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain" class="theyProfileImg">
+          <div>
+           <p class="user-name">
+            gudiya
+          </p>
+           <p class="stutes">typing...</p>
+          </div>
+        </span>
+      </span>
+            <i class="fa fa-phone"></i>
+        </div>
+
+        <div class="text-container">
+            <p class="when">today</p>
+            <div class="me msg">
+                <div>
+                    <p>Hello, How are you?</p>
+                    <p class="time">6:09</p>
+                </div>
+            </div>
+            <div class="they msg">
+                <div>
+                    <p>Hey , It's been awhile</p>
+                    <p class="time">6:09</p>
+                </div>
+            </div>
+            <div class="they msg">
+                <div>
+                    <p>What's up?</p>
+                    <p class="time">6:10</p>
+                </div>
+            </div>
+            <div class="me msg">
+                <div>
+                    <p>I wonder if you would like to watch movie tonight?</p>
+                    <p class="time">6:11</p>
+                </div>
+            </div>
+            <div class="they msg">
+                <div>
+                    <p>Sounds like a good idea?</p>
+                    <p class="time">6:12</p>
+                </div>
+            </div>
+            <div class="they msg">
+                <div>
+                    <p>Thank for asking?</p>
+                    <p class="time">6:13</p>
+                </div>
+            </div>
+            <div class="me msg">
+                <div>
+                    <p>jaogi ki nahin</p>
+                    <p class="time">6:11</p>
+                </div>
+            </div>
+            <div class="they msg">
+                <div>
+                    <p>ok dekhti hu</p>
+                    <p class="time">6:13</p>
+                </div>
+            </div>
+        </div>
+
+
+        <span class="submit">&#8618;</span>
+        <div class="msg-box" style="background-image: url('https://th.bing.com/th/id/OIP.Apw7bYKaLqSHCL_aKdfQUwAAAA?w=445&h=250&rs=1&pid=ImgDetMain')">
+            <div class="msg">
+                <i class='far fa-grin'></i>
+                <textarea placeholder="Type a message" id="msg"></textarea>
+                <i class="fa fa-link"></i>
+                <i class="fa fa-camera"></i>
+            </div>
+            <i class="fa fa-microphone" onclick="play()"></i>
+        </div>
+
+        <div class="bar"></div>
+    </div>
+
+
+
+    <div class="calling-container" style="background-image: url('https://wallpapercave.com/wp/wp2757950.gif')" >
+        <audio id="song" src="https://github.com/Short-Zed/Movie-Responsive-Site/raw/main/WHATSAPP%20VIDEO%20CALLING%20RINGTONE%20MEME%20%20SOUND%20EFFECT.mp3" type="audio/mp3" loop="loop"></audio>
+        <p class="calling-name">gudiya</p>
+        <p class="calling-status">incoming call ...</p>
+
+        <img class="calling-profile" src="https://th.bing.com/th/id/OIP.Nolz7WP6ihgX54G98AcWnAHaEo?rs=1&pid=ImgDetMain">
+
+        <div class="calling-icon" >
+            <div>
+                <i class="fa fa-phone decline" onclick="document.getElementsByClassName('calling-container')[0].style.right='-100%';audio.pause();"></i>
+                <p>decline</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone accept"></i>
+                <p>accept</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let personalChats = document.querySelector('.personal-chats');
+    let theyProfileImg = document.querySelector('.theyProfileImg');
+    let userName = document.querySelector('.user-name');
+
+
+    let profileZoom = document.querySelector('.profileZoom');
+    let profileName = document.querySelector('.profileName');
+    let profilePhotos = document.querySelector('.profile img');
+    let pro = document.querySelector('.profileZoom .profile');
+    let msg = document.querySelector('#msg');
+    let submit = document.querySelector('.submit');
+    let textContainer = document.querySelector('.text-container');
+
+
+
+    let call = document.querySelector('.fa-phone');
+    let callingContainer = document.querySelector('.calling-container');
+    let callingName = document.querySelector('.calling-name');
+    let callingProfile = document.querySelector('.calling-profile');
+    let audio = document.getElementById("song");
+
+
+
+    let searchEl = document.querySelector(".search");
+    let options = document.querySelectorAll(".chats-container ul li");
+
+
+    let meProfile = document.querySelector(".meProfile");
+
+
+
+    let battery = document.querySelector(".fa-battery");
+    let time = document.querySelector(".time");
+
+
+
+
+
+    function chatShow(name,profileImg){
+        personalChats.style.right = "0%";
+        userName.innerText = name;
+        theyProfileImg.src = profileImg;
+    }
+
+
+
+    function zoomProfile(name,profileImg){
+        profileZoom.style.transform = "scale(1.4)";
+        profileName.innerText = name;
+        profilePhotos.src = profileImg;
+        profileZoom.style.background = "rgba(0,0,0,.6)";
+    }
+
+
+    profileZoom.addEventListener("click",()=>{
+        profileZoom.style.transform = "scale(0)";
+    })
+
+
+    pro.addEventListener("mouseover",()=>{
+        profileZoom.style.transform = "scale(1.58)";
+        profileZoom.style.background = "#000";
+    })
+
+    pro.addEventListener("mouseout",()=>{
+        profileZoom.style.transform = "scale(1.4)";
+    })
+
+
+
+
+
+    msg.addEventListener("click",(e)=>{
+
+        submit.style.bottom = "126px";
+
+    })
+
+
+    //send message
+    submit.addEventListener("click",(e)=>{
+
+        submit.style.bottom = "86px";
+
+        //create element
+        var text = document.createElement('div');
+        text.classList.add('me');
+        text.classList.add('msg');
+        var div = document.createElement('div');
+        var p = document.createElement('p');
+        var time = document.createElement('p');
+        time.classList.add('time');
+
+        //time
+        var tm = new Date();
+        var msgTime = tm.getHours() + ":" + tm.getMinutes();
+
+        p.innerText = msg.value;
+        time.innerText = msgTime;
+        textContainer.appendChild(text);
+        text.appendChild(div);
+        div.appendChild(p);
+        div.appendChild(time);
+
+        //input clear
+        msg.value = " ";
+        msg.placeholder = "Type a message";
+
+    })
+
+
+
+
+    //calling
+    call.addEventListener('click',()=>{
+        callingContainer.style.right = "0%";
+
+        let getImg = theyProfileImg.src;
+        let getname = userName.innerText;
+
+        callingName.innerText = getname;
+        callingProfile.src = getImg;
+        audio.play();
+
+    })
+
+
+
+    //search
+    const search = () =>{
+
+        options.forEach((e)=>{
+            if(e.innerHTML.toUpperCase().indexOf(searchEl.value.toUpperCase()) > -1){
+                var result = "";
+            }else{
+                var result = "none";
+            }
+            e.style.display = result;
+
+        })
+    }
+
+
+    //profile upload
+    function profileUpload(event){
+
+        meProfile.src = URL.createObjectURL(event.target.files[0]);
+
+    }
+
+
+
+
+    //time
+    setInterval(() =>{
+
+        let d = new Date();
+        let h = d.getHours();
+        let m = d.getMinutes();
+
+
+        h = h < 10? "0"+h : h;
+        m = m < 10? "0"+m : m;
+
+        if(h >= 13){
+            h = h - 12;
+        }
+
+
+
+        if(h >= 6){
+            battery.classList.replace("fa-battery","fa-battery-half");
+        }else{
+            battery.classList.replace("fa-battery-half","fa-battery");
+        }
+
+        //condition
+        time.innerText = `${h}:${m}`;
+
+
+
+    });
+
+
+
+    //convert speech to text
+    function  play() {
+
+        submit.style.bottom = "126px";
+
+        if('webkitSpeechRecognition' in window) {
+            var speechRecognizer = new webkitSpeechRecognition();
+            speechRecognizer.continuous = true;
+            speechRecognizer.interimResults = true;
+            speechRecognizer.lang = 'en-US';
+            speechRecognizer.start();
+
+            var finalTranscripts = '';
+
+            speechRecognizer.onresult = function(event) {
+                var interimTranscripts = '';
+                for(var i = event.resultIndex; i < event.results.length; i++){
+                    var transcript = event.results[i][0].transcript;
+                    transcript.replace("\n", "<br>");
+                    if(event.results[i].isFinal) {
+                        finalTranscripts += transcript;
+                    }else{
+                        interimTranscripts += transcript;
+                    }
+                }
+                msg.innerText = finalTranscripts + interimTranscripts;
+            };
+            speechRecognizer.onerror = function (event) {
+
+            };
+        }else {
+            msg.innerText = 'Your browser is not supported. Please download Google chrome or Update your Google chrome!!';
+        }
+    }
+</script>
+</body>
+</html>
+--------------
+
+
+let getById = (id, parent) => parent ? parent.getElementById(id) : getById(id, document);
+let getByClass = (className, parent) => parent ? parent.getElementsByClassName(className) : getByClass(className, document);
+
+const DOM =  {
+    chatListArea: getById("chat-list-area"),
+    messageArea: getById("message-area"),
+    inputArea: getById("input-area"),
+    chatList: getById("chat-list"),
+    messages: getById("messages"),
+    chatListItem: getByClass("chat-list-item"),
+    messageAreaName: getById("name", this.messageArea),
+    messageAreaPic: getById("pic", this.messageArea),
+    messageAreaNavbar: getById("navbar", this.messageArea),
+    messageAreaDetails: getById("details", this.messageAreaNavbar),
+    messageAreaOverlay: getByClass("overlay", this.messageArea)[0],
+    messageInput: getById("input"),
+    profileSettings: getById("profile-settings"),
+    profilePic: getById("profile-pic"),
+    profilePicInput: getById("profile-pic-input"),
+    inputName: getById("input-name"),
+    username: getById("username"),
+    displayPic: getById("display-pic"),
+};
+
+let mClassList = (element) => {
+    return {
+        add: (className) => {
+            element.classList.add(className);
+            return mClassList(element);
+        },
+        remove: (className) => {
+            element.classList.remove(className);
+            return mClassList(element);
+        },
+        contains: (className, callback) => {
+            if (element.classList.contains(className))
+                callback(mClassList(element));
+        }
+    };
+};
+
+// 'areaSwapped' is used to keep track of the swapping
+// of the main area between chatListArea and messageArea
+// in mobile-view
+let areaSwapped = false;
+
+// 'chat' is used to store the current chat
+// which is being opened in the message area
+let chat = null;
+
+// this will contain all the chats that is to be viewed
+// in the chatListArea
+let chatList = [];
+
+// this will be used to store the date of the last message
+// in the message area
+let lastDate = "";
+
+// 'populateChatList' will generate the chat list
+// based on the 'messages' in the datastore
+let populateChatList = () => {
+    chatList = [];
+
+    // 'present' will keep track of the chats
+    // that are already included in chatList
+    // in short, 'present' is a Map DS
+    let present = {};
+
+    MessageUtils.getMessages()
+        .sort((a, b) => mDate(a.time).subtract(b.time))
+        .forEach((msg) => {
+            let chat = {};
+
+            chat.isGroup = msg.recvIsGroup;
+            chat.msg = msg;
+
+            if (msg.recvIsGroup) {
+                chat.group = groupList.find((group) => (group.id === msg.recvId));
+                chat.name = chat.group.name;
+            } else {
+                chat.contact = contactList.find((contact) => (msg.sender !== user.id) ? (contact.id === msg.sender) : (contact.id === msg.recvId));
+                chat.name = chat.contact.name;
+            }
+
+            chat.unread = (msg.sender !== user.id && msg.status < 2) ? 1: 0;
+
+            if (present[chat.name] !== undefined) {
+                chatList[present[chat.name]].msg = msg;
+                chatList[present[chat.name]].unread += chat.unread;
+            } else {
+                present[chat.name] = chatList.length;
+                chatList.push(chat);
+            }
+        });
+};
+
+let viewChatList = () => {
+    DOM.chatList.innerHTML = "";
+    chatList
+        .sort((a, b) => mDate(b.msg.time).subtract(a.msg.time))
+        .forEach((elem, index) => {
+            let statusClass = elem.msg.status < 2 ? "far" : "fas";
+            let unreadClass = elem.unread ? "unread" : "";
+
+            DOM.chatList.innerHTML += `
+		<div class="chat-list-item d-flex flex-row w-100 p-2 border-bottom ${unreadClass}" onclick="generateMessageArea(this, ${index})">
+			<img src="${elem.isGroup ? elem.group.pic : elem.contact.pic}" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px;">
+			<div class="w-50">
+				<div class="name">${elem.name}</div>
+				<div class="small last-message">${elem.isGroup ? contactList.find(contact => contact.id === elem.msg.sender).number + ": " : ""}${elem.msg.sender === user.id ? "<i class=\"" + statusClass + " fa-check-circle mr-1\"></i>" : ""} ${elem.msg.body}</div>
+			</div>
+			<div class="flex-grow-1 text-right">
+				<div class="small time">${mDate(elem.msg.time).chatListFormat()}</div>
+				${elem.unread ? "<div class=\"badge badge-success badge-pill small\" id=\"unread-count\">" + elem.unread + "</div>" : ""}
+			</div>
+		</div>
+		`;
+        });
+};
+
+let generateChatList = () => {
+    populateChatList();
+    viewChatList();
+};
+
+let addDateToMessageArea = (date) => {
+    DOM.messages.innerHTML += `
+	<div class="mx-auto my-2 bg-primary text-white small py-1 px-2 rounded">
+		${date}
+	</div>
+	`;
+};
+
+let addMessageToMessageArea = (msg) => {
+    let msgDate = mDate(msg.time).getDate();
+    if (lastDate != msgDate) {
+        addDateToMessageArea(msgDate);
+        lastDate = msgDate;
+    }
+
+    let htmlForGroup = `
+	<div class="small font-weight-bold text-primary">
+		${contactList.find(contact => contact.id === msg.sender).number}
+	</div>
+	`;
+
+    let sendStatus = `<i class="${msg.status < 2 ? "far" : "fas"} fa-check-circle"></i>`;
+
+    DOM.messages.innerHTML += `
+	<div class="align-self-${msg.sender === user.id ? "end self" : "start"} p-1 my-1 mx-3 rounded bg-white shadow-sm message-item">
+		<div class="options">
+			<a href="#"><i class="fas fa-angle-down text-muted px-2"></i></a>
+		</div>
+		${chat.isGroup ? htmlForGroup : ""}
+		<div class="d-flex flex-row">
+			<div class="body m-1 mr-2">${msg.body}</div>
+			<div class="time ml-auto small text-right flex-shrink-0 align-self-end text-muted" style="width:75px;">
+				${mDate(msg.time).getTime()}
+				${(msg.sender === user.id) ? sendStatus : ""}
+			</div>
+		</div>
+	</div>
+	`;
+
+    DOM.messages.scrollTo(0, DOM.messages.scrollHeight);
+};
+
+let generateMessageArea = (elem, chatIndex) => {
+    chat = chatList[chatIndex];
+
+    mClassList(DOM.inputArea).contains("d-none", (elem) => elem.remove("d-none").add("d-flex"));
+    mClassList(DOM.messageAreaOverlay).add("d-none");
+
+    [...DOM.chatListItem].forEach((elem) => mClassList(elem).remove("active"));
+
+    mClassList(elem).contains("unread", () => {
+        MessageUtils.changeStatusById({
+            isGroup: chat.isGroup,
+            id: chat.isGroup ? chat.group.id : chat.contact.id
+        });
+        mClassList(elem).remove("unread");
+        mClassList(elem.querySelector("#unread-count")).add("d-none");
+    });
+
+    if (window.innerWidth <= 575) {
+        mClassList(DOM.chatListArea).remove("d-flex").add("d-none");
+        mClassList(DOM.messageArea).remove("d-none").add("d-flex");
+        areaSwapped = true;
+    } else {
+        mClassList(elem).add("active");
+    }
+
+    DOM.messageAreaName.innerHTML = chat.name;
+    DOM.messageAreaPic.src = chat.isGroup ? chat.group.pic : chat.contact.pic;
+
+    // Message Area details ("last seen ..." for contacts / "..names.." for groups)
+    if (chat.isGroup) {
+        let groupMembers = groupList.find(group => group.id === chat.group.id).members;
+        let memberNames = contactList
+            .filter(contact => groupMembers.indexOf(contact.id) !== -1)
+            .map(contact => contact.id === user.id ? "You" : contact.name)
+            .join(", ");
+
+        DOM.messageAreaDetails.innerHTML = `${memberNames}`;
+    } else {
+        DOM.messageAreaDetails.innerHTML = `last seen ${mDate(chat.contact.lastSeen).lastSeenFormat()}`;
+    }
+
+    let msgs = chat.isGroup ? MessageUtils.getByGroupId(chat.group.id) : MessageUtils.getByContactId(chat.contact.id);
+
+    DOM.messages.innerHTML = "";
+
+    lastDate = "";
+    msgs
+        .sort((a, b) => mDate(a.time).subtract(b.time))
+        .forEach((msg) => addMessageToMessageArea(msg));
+};
+
+let showChatList = () => {
+    if (areaSwapped) {
+        mClassList(DOM.chatListArea).remove("d-none").add("d-flex");
+        mClassList(DOM.messageArea).remove("d-flex").add("d-none");
+        areaSwapped = false;
+    }
+};
+
+let sendMessage = () => {
+    let value = DOM.messageInput.value;
+    DOM.messageInput.value = "";
+    if (value === "") return;
+
+    let msg = {
+        sender: user.id,
+        body: value,
+        time: mDate().toString(),
+        status: 1,
+        recvId: chat.isGroup ? chat.group.id : chat.contact.id,
+        recvIsGroup: chat.isGroup
+    };
+
+    addMessageToMessageArea(msg);
+    MessageUtils.addMessage(msg);
+    generateChatList();
+};
+
+let showProfileSettings = () => {
+    DOM.profileSettings.style.left = 0;
+    DOM.profilePic.src = user.pic;
+    DOM.inputName.value = user.name;
+};
+
+let hideProfileSettings = () => {
+    DOM.profileSettings.style.left = "-110%";
+    DOM.username.innerHTML = user.name;
+};
+
+window.addEventListener("resize", e => {
+    if (window.innerWidth > 575) showChatList();
+});
+
+let init = () => {
+    DOM.username.innerHTML = user.name;
+    DOM.displayPic.src = user.pic;
+    DOM.profilePic.stc = user.pic;
+    DOM.profilePic.addEventListener("click", () => DOM.profilePicInput.click());
+    DOM.profilePicInput.addEventListener("change", () => console.log(DOM.profilePicInput.files[0]));
+    DOM.inputName.addEventListener("blur", (e) => user.name = e.target.value);
+    generateChatList();
+
+    console.log("Click the Image at top-left to open settings.");
+};
+
+init();
+
+ 
+$(document).ready(function(){
+    $('#action_menu_btn').click(function(){
+        $('.action_menu').toggle();
+    });
+});
+                            -----
